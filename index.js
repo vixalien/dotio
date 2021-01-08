@@ -5,42 +5,10 @@
 var express = require('express');
 var logger = require('morgan');
 var path = require('path');
-var fs = require('fs');
 var session = require('express-session');
 // var methodOverride = require('method-override');
 
 var app = module.exports = express();
-
-// set our default template engine to "ejs"
-// which prevents the need for using file extensions
-app.engine('html', function (filePath, options, callback) { // define the template engine
-  fs.readFile(filePath, function (err, content) {
-    if (err) return callback(err)
-    // this is an extremely simple template engine
-    var rendered = content.toString()
-    return callback(null, rendered)
-  })
-});
-app.engine('ejs', function (filePath, options, callback) { // define the template engine
-  fs.readFile(filePath, function (err, content) {
-    if (err) return callback(err)
-    // this is an extremely simple template engine
-    var rendered = content.toString()
-    return callback(null, rendered)
-  })
-});
-app.engine('hbs', function (filePath, options, callback) { // define the template engine
-  fs.readFile(filePath, function (err, content) {
-    if (err) return callback(err)
-    // this is an extremely simple template engine
-    var rendered = content.toString()
-    return callback(null, rendered)
-  })
-});
-app.set('view engine', 'ejs');
-
-// set views for error and 404 pages
-app.set('views', path.join(__dirname, 'views'));
 
 // define a custom res.message() method
 // which stores messages in the session
@@ -96,7 +64,7 @@ app.use(function(req, res, next){
 });
 
 // load controllers
-require('./lib/boot')(app, { verbose: !module.parent });
+require('./lib/init')(app, { verbose: !module.parent });
 
 app.use(function(err, req, res, next){
   // log it
