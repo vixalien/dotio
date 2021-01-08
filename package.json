@@ -1,0 +1,32 @@
+{
+  "name": "vixalien.io",
+  "version": "0.0.0",
+  "description": "Personal website for vixalien",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vixalien/vixalien.io.git"
+  },
+  "keywords": [
+    "vixalien",
+    "site",
+    "react"
+  ],
+  "author": "vixalien",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/vixalien/vixalien.io/issues"
+  },
+  "homepage": "https://github.com/vixalien/vixalien.io#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "morgan": "^1.10.0"
+  }
+}
