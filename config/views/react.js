@@ -10,7 +10,7 @@ let templatePath = path.join(process.cwd(), 'config', 'lib', 'react', 'template.
 let wrapperPath = path.join(buildPath, 'lib', 'wrapper.js');
 let hydratePath = path.join(buildPath, 'lib', 'hydrate.js');
 
-export default async (filePath, options, callback) => { // define the template engine
+export default (filePath, options, callback) => { // define the template engine
 	try {
 		// Load required files
 		let template = fs.readFileSync(templatePath).toString();
