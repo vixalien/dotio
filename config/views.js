@@ -15,7 +15,6 @@ let serve = (filePath, options, callback) => { // define the template engine
 export default (app) => {
 	// set our default template engine to "ejs"
 	// which prevents the need for using file extensions
-	app.set('view options', {a: 'b'})
 	app.engine('html', serve);
 	app.engine('ejs', serve);
 	app.engine('hbs', serve);
@@ -24,7 +23,7 @@ export default (app) => {
 	app.engine('js', react);
 	app.engine('jsx', react);
 
-	app.set('view engine', 'ejs');
+	app.set('view engine', 'js');
 
 	// set views for error and 404 pages
 	app.set('views', path.join(process.cwd(), 'views', 'default'));

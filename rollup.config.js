@@ -5,6 +5,36 @@ import inject from "@rollup/plugin-inject";
 
 import { external, getInputFromGlobs} from "./config/plugins/index";
 
+console.log("globs", getInputFromGlobs('views/**/*.js', '.'));
+
+let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
+.map(([key, value]) => {
+	return {
+		input: { [key]: value },
+		output: [
+			{
+				dir: '.build/views/',
+				format: 'umd',
+				name: 'JSH',
+				exports: 'auto',
+				globals: {
+					react: "React"
+				}
+			}
+		],
+		plugins: [
+			resolve(),
+			external(),
+			babel({
+				exclude: "node_modules/**",
+				babelHelpers: "bundled",
+			}),
+			inject({ React: 'react' }),
+		]
+	}
+});
+
+
 export default [
 	// Build hydrate function
 	{
@@ -38,6 +68,9 @@ export default [
 				file: '.build/lib/wrapper.js',
 				format: 'umd',
 				name: 'wrapper',
+				globals: {
+					react: "React"
+				}
 			},
 		],
 		plugins: [
@@ -67,24 +100,5 @@ export default [
 			}),
 		]
 	},
-	{
-		input: getInputFromGlobs('views/**/*.js', '.'),
-		output: [
-			{
-				dir: '.build/views/',
-				format: 'umd',
-				name: 'JSH',
-				exports: 'auto'
-			}
-		],
-		plugins: [
-			resolve(),
-			external(),
-			babel({
-				exclude: "node_modules/**",
-				babelHelpers: "bundled",
-			}),
-			inject({ React: 'react' }),
-		]
-	}
+	...globs,
 ]
