@@ -17,6 +17,9 @@
 	<script type="text/server-props" id="server-props"><!-- server-props --></script>	
 	<script>
 		(function HYDRATING_SANDBOX() {
+			// Let it know that we are in a browser
+			if (!window.process) window.process = {};
+			if (!window.process.browser) window.process.browser = true;
 			let props = JSON.parse(document.getElementById('server-props').innerHTML);
 			hydrate(() => wrapper(JSH, props))
 		})()
