@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 
-exports.engine = 'html';
+exports.engine = 'js';
 
 exports.list = function(req, res, next){
   res.render('index');
