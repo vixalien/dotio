@@ -29,7 +29,7 @@ export default (parent, options) => {
     // on the exported methods
     for (var key in obj) {
       // "reserved" exports
-      if (~['name', 'prefix', 'engine', 'before'].indexOf(key)) continue;
+      if (~['name', 'prefix', 'engine', 'before', 'after'].indexOf(key)) continue;
       // route exports
       switch (key) {
         case 'show':
@@ -65,13 +65,24 @@ export default (parent, options) => {
       handler = obj[key];
       url = prefix + url;
 
+      let string = `     %s %s -> ${obj.before ? 'before ->' : ""} %s ${obj.after ? '-> after' : ""}`
+
+      // after runs no matter what
+      let oldHandler = handler;
+      if (obj.after) {
+        handler = (...args) => {
+          oldHandler(...args);
+          obj.after();
+        }
+      }
+
       // before middleware support
       if (obj.before) {
         app[method](url, obj.before, handler);
-        verbose && console.log('     %s %s -> before -> %s', method.toUpperCase(), url, key);
+        verbose && console.log(string, method.toUpperCase(), url, key);
       } else {
         app[method](url, handler);
-        verbose && console.log('     %s %s -> %s', method.toUpperCase(), url, key);
+        verbose && console.log(string, method.toUpperCase(), url, key);
       }
     }
 
