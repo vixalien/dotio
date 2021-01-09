@@ -11,7 +11,12 @@ export default (parent, options) => {
   var verbose = options.verbose;
   fs.readdirSync(dir).forEach(function(name){
     var file = path.join(dir, name)
-    if (!fs.statSync(file).isDirectory()) return;
+    // iLoveFiles
+    if (!fs.statSync(file).isDirectory() && !fs.statSync(file).isFile()) return;
+    if (fs.statSync(file).isFile()) {
+      file = file.replace(new RegExp(path.extname(file) + "$"), "");
+      name = name.replace(new RegExp(path.extname(name) + "$"), "");
+    }
     verbose && console.log('\n   %s:', name);
     var obj = require(file);
     var name = obj.name || name;
