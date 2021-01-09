@@ -23,7 +23,7 @@ export default async (filePath, options, callback) => { // define the template e
 		let Content = require(buildSrc);
 
 		// Build props
-		let props = {exampleProp: "Hello "+"React"};
+		let props = options;
 
 		// Build the file
 		let rendered = renderToString(Wrapper(Content, props));
