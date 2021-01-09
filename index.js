@@ -8,6 +8,8 @@ var path = require('path');
 var session = require('express-session');
 // var methodOverride = require('method-override');
 
+import init from './config/init';
+
 var app = module.exports = express();
 
 // define a custom res.message() method
@@ -25,7 +27,7 @@ app.response.message = function(msg){
 if (!module.parent) app.use(logger('dev'));
 
 // serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 // session support
 app.use(session({
@@ -64,7 +66,7 @@ app.use(function(req, res, next){
 });
 
 // load controllers
-require('./lib/init')(app, { verbose: !module.parent });
+init(app, { verbose: !module.parent });
 
 app.use(function(err, req, res, next){
   // log it
@@ -79,8 +81,5 @@ app.use(function(req, res, next){
   res.status(404).render('404', { url: req.originalUrl });
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(4000);
-  console.log('Express started on port 4000');
-}
+app.listen(4000);
+console.log('Panther is ready on port 4000');

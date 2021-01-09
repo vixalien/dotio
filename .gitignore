@@ -8,12 +8,8 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-
 # production
-/build
+/.build
 
 # misc
 .DS_Store
@@ -23,9 +19,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Ignore next-mdx-enhanced cache directory
-.mdx-data
 
 # some stuff i made earlier
 /packed
