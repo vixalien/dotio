@@ -22,15 +22,6 @@ let tryResolve = (list, source) => {
 }
 
 export default function resolveRoot (list = ['.']) {
-	let load = (id) => {
-		let resolved = tryResolve(list, id);
-		if (resolved) {
-			console.log("id", id);
-			return id.replace("\\", "\\\\");
-		}
-		return null; // other ids should be handled as usually    
-	}
-
 	return {
 		name: 'resolve-root', // this name will show up in warnings and errors
 		resolveId: (id) => {
