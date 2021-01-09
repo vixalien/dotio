@@ -73,7 +73,7 @@ app.use(function(err, req, res, next){
   if (!module.parent) console.error(err.stack);
 
   // error page
-  res.status(500).render('5xx');
+  res.status(500).render('5xx', { name: err.name, stack: err.stack, message: err.message });
 });
 
 // assume 404 since no middleware responded
