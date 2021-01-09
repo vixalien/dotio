@@ -26,7 +26,7 @@ export default ({
       ids = ids.concat(getBuiltins(semver.valid(builtins)));
     }
 
-    ids = ids.map(id => new RegExp(id + "(\/.+)?"));
+    ids = ids.map(id => new RegExp("^" +id + "(\/.+)?"));
 
     let external = ids;
 
