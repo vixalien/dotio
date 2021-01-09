@@ -16,21 +16,22 @@ let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
 				format: 'umd',
 				name: 'JSH',
 				exports: 'auto',
+				sourcemap: 'inline',
+				sourcemapExcludeSources: true,
 				globals: {
 					react: "React"
 				}
 			}
 		],
-		sourcemap: 'inline',
 		plugins: [
 			resolve(),
-			external(),
 			resolveRoot(),
-			inject({ React: 'react' }),
+			external(),
 			babel({
 				exclude: "node_modules/**",
 				babelHelpers: "bundled",
 			}),
+			inject({ React: 'react' }),
 		]
 	}
 });
@@ -91,15 +92,18 @@ export default [
 			{
 				file: '.build/server/index.js',
 				format: 'cjs',
+				sourcemap: 'inline',
+				sourcemapExcludeSources: true
 			},
 		],
-		sourcemap: 'inline',
 		plugins: [
 			resolve(),
+			external(),
 			babel({
 				exclude: "node_modules/**",
 				babelHelpers: "bundled",
 			}),
+			resolveRoot(),
 		]
 	},
 	...globs,
