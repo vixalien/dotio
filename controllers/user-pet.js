@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 
-var db = require('../../db');
+var db = require('../db');
 
 exports.name = 'pet';
 exports.prefix = '/user/:user_id';
