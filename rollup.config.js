@@ -3,10 +3,9 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import inject from "@rollup/plugin-inject";
 
-import { external, getInputFromGlobs} from "./config/plugins/index";
+import { external, getInputFromGlobs, resolveRoot } from "./config/plugins/index";
 
-console.log("globs", getInputFromGlobs('views/**/*.js', '.'));
-
+// No code-splitting
 let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
 .map(([key, value]) => {
 	return {
@@ -22,14 +21,16 @@ let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
 				}
 			}
 		],
+		sourcemap: 'inline',
 		plugins: [
 			resolve(),
 			external(),
+			resolveRoot(),
+			inject({ React: 'react' }),
 			babel({
 				exclude: "node_modules/**",
 				babelHelpers: "bundled",
 			}),
-			inject({ React: 'react' }),
 		]
 	}
 });
@@ -92,6 +93,7 @@ export default [
 				format: 'cjs',
 			},
 		],
+		sourcemap: 'inline',
 		plugins: [
 			resolve(),
 			babel({
