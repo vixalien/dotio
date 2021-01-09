@@ -68,7 +68,7 @@ export default [
 		]
 	},
 	{
-		input: getInputFromGlobs('controllers/*/views/**/*.js', '.'),
+		input: getInputFromGlobs('views/**/*.js', '.'),
 		output: [
 			{
 				dir: '.build/views/',
