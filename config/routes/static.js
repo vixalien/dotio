@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var express = require('express');
 
-let libName = (lib) => process.env.NODE_ENV == "development" ? `${lib}/umd/${lib}.production.min.js` : `${lib}/umd/${lib}.development.js`
+let libName = (lib) => process.env.NODE_ENV.match(/production/) ? `${lib}/umd/${lib}.production.min.js` : `${lib}/umd/${lib}.development.js`
 
 export default (app) => {
 	// React and his sister
