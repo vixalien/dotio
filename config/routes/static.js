@@ -8,12 +8,14 @@ export default (app) => {
 	// React and his sister
 	app.use('/lib/react.js', (req, res) => {
     res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
+    res.setHeader('Cache-Control', 'public, max-age=2592000')
 		res.status(200);
 		res.send(fs.readFileSync(require.resolve(libName('react'))).toString());
 	});
 
 	app.use('/lib/react-dom.js', (req, res) => {
     res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
+		res.setHeader('Cache-Control', 'public, max-age=2592000')
 		res.status(200)
 		res.send(fs.readFileSync(require.resolve(libName('react-dom'))).toString());
 	});
