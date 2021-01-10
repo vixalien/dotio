@@ -6,11 +6,15 @@ var express = require('express');
 var logger = require('morgan');
 var path = require('path');
 var session = require('express-session');
+var compression = require('compression');
 // var methodOverride = require('method-override');
 
 import init from './config/init';
 
 var app = module.exports = express();
+
+// use compression
+app.use(compression());
 
 // define a custom res.message() method
 // which stores messages in the session
@@ -74,6 +78,12 @@ app.use(function(err, req, res, next){
 
   // error page
   res.status(500).render('5xx', { name: err.name, stack: err.stack, message: err.message });
+});
+
+// offline page
+app.get('/offline', (req, res) => {
+  res.status(200);
+  res.render("offline");
 });
 
 // assume 404 since no middleware responded
