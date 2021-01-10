@@ -7,8 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "dev": "NODE_ENV=development node",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "start": "node .build/server/index.js"
   },
   "repository": {
     "type": "git",
