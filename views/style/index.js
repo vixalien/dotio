@@ -2,9 +2,7 @@ export default () => {
 	return (
 	<main>
 		<h1>Building the site</h1>
-		<div className="description">
-			<p>Hello</p>
-		</div>
+		<h2 className="description">I only had one thing to start from: scratch</h2>
 		<hr/>
 		<h2>Hello</h2>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
