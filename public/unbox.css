@@ -1,0 +1,140 @@
+:root {
+	/* Headings */
+	--heading-color: #111;
+	--heading-lighter-color: #454;
+	--heading-lighest-color: #717171;
+	--heading-font-weight: 500;
+	--heading-font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial,
+		sans-serif;
+	--heading-line-height: 1.3;
+
+	/* Themes */
+	--secondary: #666;
+}
+
+@font-face {
+	font-family: 'Inter';
+	font-weight: 100 900;
+	font-display: block;
+	src: url('/fonts/inter.woff2')
+		format('woff2');
+}
+html {
+	font-family: 'Inter', system-ui, /* macOS 10.11-10.12 */ -apple-system, /* Windows 6+ */ "Segoe UI", /* Android 4+ */ "Roboto", /* Ubuntu 10.10+ */ "Ubuntu", /* Gnome 3+ */ "Cantarell", /* KDE Plasma 5+ */ "Noto Sans", /* fallback */ sans-serif, /* macOS emoji */ "Apple Color Emoji", /* Windows emoji */ "Segoe UI Emoji", /* Windows emoji */ "Segoe UI Symbol", /* Linux emoji */ "Noto Color Emoji";
+}
+code,
+kbd,
+samp,
+pre {
+	font-family: /* macOS 10.10+ */ "Menlo", /* Windows 6+ */ "Consolas", /* Android 4+ */ "Roboto Mono", /* Ubuntu 10.10+ */ "Ubuntu Monospace", /* KDE Plasma 5+ */ "Noto Mono", /* KDE Plasma 4+ */ "Oxygen Mono", /* Linux/OpenOffice fallback */ "Liberation Mono", /* fallback */ monospace, /* macOS emoji */ "Apple Color Emoji", /* Windows emoji */ "Segoe UI Emoji", /* Windows emoji */ "Segoe UI Symbol", /* Linux emoji */ "Noto Color Emoji";
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+	font-size: 16px;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5 {
+	margin: 0 0 1rem 0;
+	font-weight: var(--heading-font-weight);
+	font-family: var(--heading-font-family);
+	line-height: var(--heading-line-height);
+	color: var(--heading-color);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h4:not(:first-child),
+h5:not(:first-child) {
+	margin: 0 0 1rem 0;
+}
+
+/* Increased margin on additional headings */
+h1:not(:first-child),
+h2:not(:first-child),
+h3:not(:first-child) {
+	margin-top: 1.5rem;
+}
+
+/* Heading individual styles */
+h1 {
+	font-size: 3.5rem;
+	font-weight: 700;
+	letter-spacing: -0.03rem;
+}
+
+h2 {
+	font-size: 2.5rem;
+	font-weight: 700;
+	padding-bottom: 0.2rem;
+}
+
+h3 {
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: #404040;
+}
+
+h4 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #5d5d5d;
+}
+
+/* Typed */
+p,
+ol,
+ul,
+dl,
+table {
+	margin: 0 0 1.5rem 0;
+	font-size: 1.15rem;
+}
+
+@media screen and (min-width: 750px) {
+	p,
+	ol,
+	ul,
+	dl,
+	table {
+		margin: 0 0 2rem 0;
+		font-size: 1.25rem;
+	}
+}
+
+ul li p {
+	margin: 0;
+}
+
+/* Remove extra margin for nested lists */
+ul li ul {
+	padding-left: 1rem;
+	margin: 0;
+}
+
+ul li ul li {
+	margin: .25rem 0;
+}
+
+ol li ol {
+	margin-bottom: 0;
+}
+
+.description p, p.description {
+	color: var(--secondary);
+	font-weight: 400;
+	font-size: 1.5rem;
+}
+
+hr {
+	margin: 0;
+	border: 0;
+	border-top: 1px solid;
+}
