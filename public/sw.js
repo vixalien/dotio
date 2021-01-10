@@ -142,25 +142,25 @@ let network = (evt) => {
 
 let paths = {
 	uncachable: ["sw.js"],
+	json: [".json", "registerSW.js"],
 	views: [/\/views.*.js/],
 	images: [".png", ".svg", ".jpg", ".ico"],
 	static: [".woff2"],
 	staticLibs: ["lib/react.js", "lib/react-dom.js"],
 	libs: [".js"],
 	style: [".css"],
-	json: [".json"],
 	default: [/.*/]
 }
 
 let functions = {
 	uncachable: network,
 	views: networkThenCache,
+	json: cacheAndUpdate,
 	images: cache,
 	static: cache,
 	staticLibs: cache,
 	libs: cache,
 	style: cache,
-	json: cacheAndUpdate,
 	default: networkOrFallback,
 }
 
