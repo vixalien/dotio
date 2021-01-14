@@ -2,23 +2,9 @@ var fs = require('fs');
 var path = require('path');
 var express = require('express');
 
-let libName = (lib) => process.env.NODE_ENV.match(/production/) ? `${lib}/umd/${lib}.production.min.js` : `${lib}/umd/${lib}.development.js`
+process.env.NODE_ENV = process.env.VERCEL_ENV || process.env.NODE_ENV || 'production';
 
 export default (app) => {
-	// React and his sister
-	app.use('/lib/react.js', (req, res) => {
-    res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
-    res.setHeader('Cache-Control', 'public, max-age=2592000')
-		res.status(200);
-		res.send(fs.readFileSync(require.resolve(libName('react'))).toString());
-	});
-
-	app.use('/lib/react-dom.js', (req, res) => {
-    res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
-		res.setHeader('Cache-Control', 'public, max-age=2592000')
-		res.status(200)
-		res.send(fs.readFileSync(require.resolve(libName('react-dom'))).toString());
-	});
 
 	// Public
 	app.use(express.static(path.join(process.cwd(), 'public/')));
