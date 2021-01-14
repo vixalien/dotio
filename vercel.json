@@ -1,9 +1,4 @@
 {
 	"version": 2,
-	"routes": [
-		{
-			"src": "/(.*)",
-			"dest": "/.build/server.index.js"
-		}
-	]
+	"rewrites": [{ "source": "/(.*)", "destination": "/.build/server.index.js" }]
 }
