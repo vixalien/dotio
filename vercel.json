@@ -1,6 +1,11 @@
 {
 	"version": 2,
 	"rewrites": [
-    { "source": "/app/(.*)", "destination": "/.build/server" },
-  ]
+    { "source": "/app/(.*)", "destination": "/.build/server/index.js" },
+  ],
+  "functions": {
+  	"./.build/server/index.js": {
+      "runtime": "@vercel/node"
+    }
+  }
 }
