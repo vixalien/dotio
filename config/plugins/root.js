@@ -1,4 +1,3 @@
-import fs from 'fs';
 import path from 'path';
 
 let resolve = (source, root = '.', tolerate = true) => {

@@ -8,8 +8,8 @@
 # testing
 /coverage
 
-# production
-/.build
+# production no more
+# /.build
 
 # misc
 .DS_Store
@@ -22,3 +22,4 @@ yarn-error.log*
 
 # some stuff i made earlier
 /packed
+.vercel
