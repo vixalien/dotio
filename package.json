@@ -9,7 +9,7 @@
   "scripts": {
     "build": "rollup -c",
     "start": "node .build/server/index.js",
-    "install": "npm install && npm build"
+    "deploy": "npm install && npm build"
   },
   "repository": {
     "type": "git",
