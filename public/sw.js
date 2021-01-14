@@ -1,44 +1,65 @@
-var CACHE = 'cache-v3';
+var CACHE = 'cache-v1';
 
-function fromCache(request) {
-  return caches.open(CACHE).then(function (cache) {
-    return cache.match(request).then(function (matching) {
-      return matching || Promise.reject('no-match');
-    });
-  })
+// Time limited network request.
+function fromNetwork(request, timeout) {
+  return new Promise(function (fulfill, reject) {
+    // Reject in case of timeout.
+    var timeoutId = setTimeout(reject, timeout);
+    // Fulfill in case of success.
+    fetch(request).then(function (response) {
+      clearTimeout(timeoutId);
+      fulfill(response);
+    // Reject also if network fetch rejects.
+    }, reject);
+  });
 }
 
+// Open the cache where the assets were stored
+fromCache = async (request) => {
+  return await caches.open(CACHE).then(async (cache) => {
+    let response = await cache.match(request);
+    if(!response) throw "not present in cache";
+    return response;
+  });
+}
+
+// Open the cache where the assets were stored
+offline = () => fromCache(new Request('/offline'))
+
+// Update consists in opening the cache, performing a network request and
+// storing the new response data.
 function update(request) {
   return caches.open(CACHE).then(function (cache) {
     return fetch(request).then(function (response) {
-      return cache.put(request, response);
-    }).catch(() => {});
-  });
-}
-
-// This fallback never fails since it uses embedded fallbacks.
-function useFallback() {
-  return fromCache('/offline').catch(() => new Response('offline'));
-}
-
-let CacheAndUpdate = (req) => {
-  return fromCache(req)
-    .then(e => {
-      update(request);
-      return e;
+    	if (response.status < 200 || response.status > 299) return "not stored"
+      return cache.put(request, response.clone()).then(function () {
+        return response;
+      });
     });
-}
-
-let NetworkOrCache = (request) => {
-  return fetch(request).then(function (response) {
-    return response.ok ? response : fromCache(request);
-  })
-  .catch(function () {
-    return fromCache(request);
   });
 }
 
-let CacheOnly = fromCache;
+// Sends a message to the clients.
+function refresh(response) {
+  return self.clients.matchAll().then(function (clients) {
+    clients.forEach(function (client) {
+      // Encode which resource has been updated. By including the
+      // [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) the client can
+      // check if the content has changed.
+      var message = {
+        type: 'refresh',
+        url: response.url,
+        // Notice not all servers return the ETag header. If this is not
+        // provided you should use other cache headers or rely on your own
+        // means to check if the content has changed.
+        // eTag: response.headers.get('ETag')
+      };
+      // Tell the client about the update.
+      client.postMessage(JSON.stringify(message));
+    });
+  });
+}
+
 
 
 addEventListener('install', (event) => {
@@ -56,7 +77,7 @@ addEventListener('install', (event) => {
 	);
 });
 
-addEventListener('activate', (event) => {
+addEventListener('install', (event) => {
 	var cacheKeeplist = [CACHE];
 	event.waitUntil(
 		caches.keys().then((keyList) => {
@@ -74,8 +95,7 @@ onmessage = e => { console.log(e) }
 let networkOrFallback = (evt) => {
 	evt.respondWith(
 	  fetch(evt.request)
-    .catch(() => fromCache(evt.request)
-  	.catch(() => offline()))
+  	.catch(() => offline())
   );
 
   evt.waitUntil(
@@ -87,8 +107,8 @@ let networkOrFallback = (evt) => {
 let networkThenCache = (evt) => {
 	evt.respondWith(
   	fromNetwork(evt.request, 500)
-  	.catch(() => fromCache(evt.request)
-  	.catch(() => fetch(evt.request).catch(e => notFound())))
+  	.catch(() => fromCache(evt.request))
+  	.catch(() => fetch(evt.request))
   );
 
   evt.waitUntil(
@@ -100,7 +120,7 @@ let networkThenCache = (evt) => {
 let cacheAndUpdate = (evt) => {
 	evt.respondWith(
   	fromCache(evt.request)
-  	.catch(() => fetch(evt.request).catch(e => notFound()))
+  	.catch(() => fetch(evt.request).then(() => update(evt.request)))
   );
 
   evt.waitUntil(
@@ -112,12 +132,12 @@ let cacheAndUpdate = (evt) => {
 let cache = (evt) => {
 	evt.respondWith(
   	fromCache(evt.request)
-  	.catch(() => fetch(evt.request).catch(e => notFound()))
+  	.catch(() => fetch(evt.request).then(() => update(evt.request)))
   );
 };
 
 let network = (evt) => {
-	evt.respondWith(fetch(evt.request).catch(e => notFound()));
+	evt.respondWith(fetch(evt.request));
 };
 
 let paths = {
