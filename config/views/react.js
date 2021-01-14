@@ -6,7 +6,7 @@ const React = require('react');
 const { renderToString } = require('react-dom/server');
 
 let buildPath = path.join(process.cwd(), '.build');
-let templatePath = path.join(process.cwd(), 'config', 'lib', 'react', 'template.html');
+let templatePath = path.join(buildPath, 'lib', 'template.html');
 let wrapperPath = path.join(buildPath, 'lib', 'wrapper.js');
 let hydratePath = path.join(buildPath, 'lib', 'hydrate.js');
 

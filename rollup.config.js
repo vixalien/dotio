@@ -3,7 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import inject from "@rollup/plugin-inject";
 
-import { external, getInputFromGlobs, resolveRoot } from "./config/plugins/index";
+import { external, getInputFromGlobs, resolveRoot, resolveHTML } from "./config/plugins/index";
 
 // No code-splitting
 let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
@@ -104,6 +104,17 @@ export default [
 				babelHelpers: "bundled",
 			}),
 			resolveRoot(),
+		]
+	},
+	{
+		input:  './config/lib/react/template.html',
+		output: [
+			{
+				file: '.build/lib/template.html'
+			},
+		],
+		plugins: [
+			resolveHTML()
 		]
 	},
 	...globs,
