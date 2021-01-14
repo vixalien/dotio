@@ -1,8 +1,1 @@
-var hydrate = (function (react, reactDom) {
-	'use strict';
-
-	var hydrate = (App => reactDom.hydrate( /*#__PURE__*/react.createElement(App, null), document.getElementById('root')));
-
-	return hydrate;
-
-}(React, ReactDOM));
+var hydrate=function(e,t){"use strict";return r=>t.hydrate(e.createElement(r,null),document.getElementById("root"))}(React,ReactDOM);

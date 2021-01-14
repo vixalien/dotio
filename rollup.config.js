@@ -2,6 +2,7 @@ import babel from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import inject from "@rollup/plugin-inject";
+import { terser } from "rollup-plugin-terser";
 
 import { external, getInputFromGlobs, resolveRoot, resolveHTML } from "./config/plugins/index";
 
@@ -32,6 +33,7 @@ let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
 				babelHelpers: "bundled",
 			}),
 			inject({ React: 'react' }),
+			terser(),
 		]
 	}
 });
@@ -60,6 +62,7 @@ export default [
 				babelHelpers: "bundled",
 			}),
 			commonjs(),
+			terser()
 		]
 	},
 	// Build wrapper
@@ -83,6 +86,7 @@ export default [
 				babelHelpers: "bundled",
 			}),
 			commonjs(),
+			terser()
 		]
 	},
 	// Build Javascript bundles and prepend import React (for Server consumption)
@@ -104,6 +108,7 @@ export default [
 				babelHelpers: "bundled",
 			}),
 			resolveRoot(),
+			terser()
 		]
 	},
 	{

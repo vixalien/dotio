@@ -1,17 +1,1 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('react')) :
-	typeof define === 'function' && define.amd ? define(['react'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.wrapper = factory(global.React));
-}(this, (function (React) { 'use strict';
-
-	function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-	var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-
-	function App(Component, pageProps = {}) {
-	  return /*#__PURE__*/React__default['default'].createElement(Component, pageProps);
-	}
-
-	return App;
-
-})));
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t(require("react")):"function"==typeof define&&define.amd?define(["react"],t):(e="undefined"!=typeof globalThis?globalThis:e||self).wrapper=t(e.React)}(this,(function(e){"use strict";function t(e){return e&&"object"==typeof e&&"default"in e?e:{default:e}}var n=t(e);return function(e,t={}){return n.default.createElement(e,t)}}));
