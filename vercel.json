@@ -4,7 +4,7 @@
     { "source": "/(.*)", "destination": "/.build/server/index.js" },
   ],
   "functions": {
-  	"./.build/server/index.js": {
+  	".build/server/index.js": {
       "runtime": "@vercel/node"
     }
   }
