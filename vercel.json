@@ -1,7 +1,7 @@
 {
 	"version": 2,
 	"rewrites": [
-    { "source": "/app/(.*)", "destination": "/.build/server/index.js" },
+    { "source": "/(.*)", "destination": "/.build/server/index.js" },
   ],
   "functions": {
   	"./.build/server/index.js": {
