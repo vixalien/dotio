@@ -27,10 +27,13 @@ export default async (filePath, options, callback) => { // define the template e
 		// Build props
 		let props = options;
 
+		let deploy_url = process.env.VERCEL_URL || process.env.URL || 'vixaliendotio.vercel.app';
+		deploy_url.startsWith('localhost') ? deploy_url = "http://" + deploy_url : deploy_url = "https://" + deploy_url
+
 		// Build the file
 		let rendered = renderToString(Wrapper(Content, props));
 		rendered = template
-			.replace('<!-- canonical-url -->', process.env.VERCEL_URL || process.env.URL || 'https://vixalien.now.sh')
+			.replace('<!-- canonical-url -->', deploy_url)
 			.replace('<!-- server-props -->', JSON.stringify(props))
 			.replace('<!-- component-placeholder -->', rendered)
 			.replace('<!-- hydrate-path -->', src);
