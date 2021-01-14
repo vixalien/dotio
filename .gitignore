@@ -9,7 +9,8 @@
 /coverage
 
 # production no more
-.build
+/.build
+/api
 
 # misc
 .DS_Store
