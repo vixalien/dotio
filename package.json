@@ -8,8 +8,7 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "start": "node api/server",
-    "deploy": "npm install && npm run build",
+    "start": "node api/server"
   },
   "repository": {
     "type": "git",
