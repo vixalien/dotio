@@ -10,7 +10,6 @@
 
 # production no more
 /.build
-/api
 
 # misc
 .DS_Store
