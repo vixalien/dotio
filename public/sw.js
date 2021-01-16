@@ -102,7 +102,8 @@ addEventListener('install', () => Precache([
 	'/lib/hydrate.js',
 	'/lib/wrapper.js',
 	'/offline',
-	'/views/views/default/offline.js'
+	'/views/views/default/offline.js',
+	'/',
 ]))
 
 // Fetch, timeout, load from cache or just load

@@ -1,27 +1,27 @@
 {
-  "name": "vixalien.io",
-  "short_name": "vixalien.io",
-  "start_url": "/?utm_source=homescreen&utm_medium=installed-pwa",
-  "icons": [
-    {
-      "src": "/favicon/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/favicon/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "/favicon/maskable.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ],
-  "orientation": "portrait",
-  "theme_color": "#0e5d43",
-  "background_color": "#cb96f6",
-  "display": "standalone"
+	"name": "vixalien.io",
+	"short_name": "vixalien.io",
+	"start_url": "/?utm_source=homescreen&utm_medium=installed-pwa",
+	"icons": [
+		{
+			"src": "/favicon/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/favicon/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "/favicon/maskable.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "maskable"
+		}
+	],
+	"orientation": "portrait",
+	"theme_color": "#0e5d43",
+	"background_color": "#cb96f6",
+	"display": "minimal-ui"
 }
