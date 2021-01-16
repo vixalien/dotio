@@ -94,7 +94,7 @@ export default [
 		input: './index.js',
 		output: [
 			{
-				file: 'api/server/index.js',
+				file: '.build/server/index.js',
 				format: 'cjs',
 				sourcemap: 'inline',
 				sourcemapExcludeSources: true
