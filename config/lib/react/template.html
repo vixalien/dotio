@@ -74,8 +74,12 @@
 			// Let it know that we are in a browser
 			if (!window.process) window.process = {};
 			if (!window.process.browser) window.process.browser = true;
-			let props = JSON.parse(document.getElementById('server-props').innerHTML);
-			hydrate(() => wrapper(JSH, props))
+			try {
+        let props = JSON.parse(document.getElementById('server-props').innerHTML);
+  			hydrate(() => wrapper(JSH, props));
+      } catch (err) {
+        console.log("vixalien.io", "Could not hydrate app, because: ", err);
+      }
 		})
 	</script>	
 
