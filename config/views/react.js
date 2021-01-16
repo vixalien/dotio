@@ -12,9 +12,6 @@ let hydratePath = path.join(buildPath, 'lib', 'hydrate.js');
 
 export default async (filePath, options, callback) => { // define the template engine
 	try {
-		// log data to find out what's wrong with vercel
-		console.log('data', 'cwd', process.cwd(), '__dirname', __dirname, 'options', options)
-
 		// Load required files
 		let template = fs.readFileSync(templatePath).toString();
 		let Wrapper = require(wrapperPath);
@@ -24,8 +21,6 @@ export default async (filePath, options, callback) => { // define the template e
 		let src = path.relative(process.cwd(), filePath);
 		let buildSrc = path.join(buildPath, 'views', src);
 		let Content = await import(buildSrc).then(e => e.default);
-
-		console.log('Content', Content);
 
 		// Build props
 		let props = options;
