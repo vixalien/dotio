@@ -31,7 +31,7 @@ export default async (filePath, options, callback) => { // define the template e
 		// Build the file
 		let rendered = renderToString(Wrapper(Content, props));
 		rendered = template
-			.replace('<!-- canonical-url -->', deploy_url)
+			.replace('<!-- canonical-url -->', deploy_url + props.url)
 			.replace('<!-- server-props -->', JSON.stringify(props))
 			.replace('<!-- component-placeholder -->', rendered)
 			.replace('<!-- hydrate-path -->', src);

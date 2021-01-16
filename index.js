@@ -19,6 +19,13 @@ var app = module.exports = express();
 // use compression
 app.use(compression());
 
+// set url on request
+  app.use((req, res, next) => {
+    console.log("URL", req._parsedUrl._raw);
+    res.locals.url = req._parsedUrl._raw;
+    next();
+  })
+
 // define a custom res.message() method
 // which stores messages in the session
 app.response.message = function(msg){
