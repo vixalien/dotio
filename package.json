@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "start": "node api/server"
+    "start": "node .build/server"
   },
   "repository": {
     "type": "git",
