@@ -143,12 +143,28 @@ main {
 	margin: auto;
 }
 
+@supports (padding: max(env(safe-area-inset-left, 0px))) {
+	main {
+		padding-bottom: max(env(safe-area-inset-bottom), 30px);
+		padding-left  : max(env(safe-area-inset-left  ), 10px);
+		padding-right : max(env(safe-area-inset-right ), 10px);
+	}
+}
+
 /* Lil Header */
 header {
   padding: 15px 10px;
   color: #b2b6bb;
   background-color: #0a1826;
   font-size: 2rem;
+}
+
+@supports (padding: max(env(safe-area-inset-left, 0px))) {
+	header {
+		padding-top   : max(env(safe-area-inset-top   ), 15px);
+		padding-left  : max(env(safe-area-inset-left  ), 10px);
+		padding-right : max(env(safe-area-inset-right ), 10px);
+	}
 }
 
 header nav {
