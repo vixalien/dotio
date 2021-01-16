@@ -25,6 +25,11 @@ export default (parent, options) => {
     var handler;
     var method;
     var url;
+    if (name == 'index') {
+      name = '/';
+    } else {
+      name = '/' + name;
+    }
 
     // allow specifying the view engine
     if (obj.engine) app.set('view engine', obj.engine);
@@ -39,23 +44,27 @@ export default (parent, options) => {
       switch (key) {
         case 'show':
           method = 'get';
-          url = '/' + name + '/:' + name + '_id';
+          url = name + '/:' + name + '_id';
           break;
         case 'list':
           method = 'get';
-          url = '/' + name + 's';
+          if (name == '/') {
+            url = name;
+          } else {
+            url = name + 's';
+          }
           break;
         case 'edit':
           method = 'get';
-          url = '/' + name + '/:' + name + '_id/edit';
+          url = name + '/:' + name + '_id/edit';
           break;
         case 'update':
           method = 'put';
-          url = '/' + name + '/:' + name + '_id';
+          url = name + '/:' + name + '_id';
           break;
         case 'create':
           method = 'post';
-          url = '/' + name;
+          url = name;
           break;
         case 'index':
           method = 'get';
