@@ -9,6 +9,9 @@ var session = require('express-session');
 var compression = require('compression');
 // var methodOverride = require('method-override');
 
+// load env
+require('dotenv').config()
+
 import init from './config/init';
 
 var app = module.exports = express();
