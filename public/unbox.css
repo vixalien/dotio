@@ -137,7 +137,7 @@ hr {
 	border-top: 1px solid var(--secondary);
 }
 
-main, section {
+main {
 	padding: 30px 10px;
 	max-width: 620px;
 	margin: auto;
