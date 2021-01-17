@@ -33,6 +33,7 @@ let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
 				babelHelpers: "bundled",
 			}),
 			inject({ React: 'react' }),
+			terser(),
 			json()
 		]
 	}
