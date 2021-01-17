@@ -12,14 +12,10 @@ let Entity = ({ src, alt, text, href }) => {
 			  padding: 40px 15px 10px 10px;
 			  position: absolute;
 			  bottom: 0;
-			  background: linear-gradient(0deg, #fff9, #fff5 60%, transparent 80%);
+			  background: linear-gradient(0deg, #fffb ,#fff8 60% ,#fff5 80%, #fff0);
 			  right: 0;
 			  left: 0;
 				color: #000;
-				display: block;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
 			}
 
 			.entity {
