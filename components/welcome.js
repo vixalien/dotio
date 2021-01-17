@@ -1,12 +1,14 @@
 let Welcome = () => {
 	return <>
 		<section>
-			<h1>Welcome!</h1>
-			<h2 className="description">
-				Hello, my name is Shema Angelo, but you can call me vixalien.
-				I am a web developer. This is my site, where you can find my
-				posts and projects. You can learn more about me at <a href="/about">/about</a>
-			</h2>
+			<div>
+				<h1>Welcome!</h1>
+				<h2 className="description">
+					Hello, my name is Shema Angelo, but you can call me vixalien.
+					I am a web developer. This is my site, where you can find my
+					posts and projects. You can learn more about me at <a href="/about">/about</a>
+				</h2>
+			</div>
 		</section>
 		<style jsx>{`
 			section {
@@ -14,14 +16,27 @@ let Welcome = () => {
 				background-image: linear-gradient(45deg, #dcb8fb, #ad4ef9);
 			}
 
-			section h1 {
+			h1 {
 				font-size: 2.5rem;
 			}
 
-			section h2.description {
+			h2.description {
 				color: var(--fg);
 				font-size: 1.3rem;
 				font-weight: 500;
+			}
+
+			div {
+				padding: 30px 10px;
+				max-width: 620px;
+				margin: auto;
+			}
+
+			@supports (padding: max(env(safe-area-inset-left, 0px))) {
+				div {
+					padding-left  : max(env(safe-area-inset-left  ), 10px);
+					padding-right : max(env(safe-area-inset-right ), 10px);
+				}
 			}
 		`}</style>
 	</>
