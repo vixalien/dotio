@@ -13,9 +13,9 @@ let Entity = ({ src, alt, text, href }) => {
 			  position: absolute;
 			  bottom: 0;
 			  background: linear-gradient(0deg, #fffb ,#fff8 60% ,#fff5 80%, #fff0);
-			  right: 0;
-			  left: 0;
 				color: #000;
+				opacity: 1;
+				transition: .3s;
 			}
 
 			.entity {
@@ -38,6 +38,11 @@ let Entity = ({ src, alt, text, href }) => {
 			.entity:hover, .entity:active, .entity:focus {
 				color: var(--link);
 			}
+
+			.entity:hover span, .entity:active span, .entity:focus span{
+				opacity: 0;
+			}
+
 			.entity .radius {
 				overflow: hidden;
 				border-radius: 20px;
