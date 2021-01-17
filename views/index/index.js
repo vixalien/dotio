@@ -1,12 +1,11 @@
 import Header from "components/header";
+import Welcome from "components/welcome";
 
 export default () => {
 	return (<>
 	<Header/>
+	<Welcome/>
 	<main>
-		<h1>Building the site</h1>
-		<h2 className="description">I only had one thing to start from: scratch</h2>
-		<hr/>
 		<h2>Hello</h2>
 		<p>Lorem ipsum dolor sit <a href="/">amet</a>, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
