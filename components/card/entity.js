@@ -45,7 +45,7 @@ let Entity = ({ src, alt, text }) => {
 				overflow: hidden;
 				border-radius: 20px;
 				position: relative;
-				border: 3px solid;
+				border: 2px solid;
 				width: 120px;
 				height: 120px;
 			}
