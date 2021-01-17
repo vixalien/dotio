@@ -36,6 +36,7 @@ let Welcome = () => {
 				div {
 					padding-left  : max(env(safe-area-inset-left  ), 10px);
 					padding-right : max(env(safe-area-inset-right ), 10px);
+					max-width: calc(600px + max(env(safe-area-inset-right ), 10px) + max(env(safe-area-inset-left  ), 10px));
 				}
 			}
 		`}</style>
