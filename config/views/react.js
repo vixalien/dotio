@@ -4,6 +4,7 @@ const path = require('path');
 const babel = require('@babel/core');
 const React = require('react');
 const { renderToString } = require('react-dom/server');
+import { flushToHTML } from 'styled-jsx/server'
 
 let buildPath = path.join(process.cwd(), '.build');
 let templatePath = path.join(buildPath, 'lib', 'template.html');
@@ -30,7 +31,12 @@ export default async (filePath, options, callback) => { // define the template e
 
 		// Build the file
 		let rendered = renderToString(Wrapper(Content, props));
+		
+		// flush CSS
+		const styles = flushToHTML();
+
 		rendered = template
+			.replace('<!-- styles -->', styles)
 			.replace('<!-- canonical-url -->', deploy_url + props.url)
 			.replace('<!-- server-props -->', JSON.stringify(props))
 			.replace('<!-- component-placeholder -->', rendered)
