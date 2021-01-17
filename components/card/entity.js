@@ -1,11 +1,11 @@
-let Entity = ({ src, alt, text }) => {
+let Entity = ({ src, alt, text, href }) => {
 	return <>
-		<div className="entity">
+		<a className="entity" href={href}>
 			<div className="radius">
 				<img src={src} alt={alt} width="120px" height="120px"/>
 				<span>{text}</span>
 			</div>
-		</div>
+		</a>
 		<style jsx>{`
 			.entity span {
 			  display: inline-flex;
@@ -28,6 +28,7 @@ let Entity = ({ src, alt, text }) => {
 			  flex-direction: column;
 			  cursor: pointer;
 			  transition: .3s;
+			  border-bottom: 0;
 			}
 
 			.entity:first-child {
