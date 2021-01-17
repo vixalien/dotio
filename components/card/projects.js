@@ -6,6 +6,7 @@ let SampleProject = () => {
 		text="Sample Project"
 		src="/favicon/android-chrome-192x192.png"
 		alt="Sample Project"
+		href="/project/random"
 	/>
 }
 
