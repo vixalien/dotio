@@ -13,14 +13,17 @@ export default () => {
 		<style jsx>{`
 			/* Lil Header */
 			header {
-			  padding: 15px 10px;
 			  color: #b2b6bb;
 			  background-color: #0a1826;
 			  font-size: 2rem;
 			}
 
+			nav {
+			  padding: 15px 10px;
+			}
+
 			@supports (padding: max(env(safe-area-inset-left, 0px))) {
-				header {
+				nav {
 					padding-top   : max(env(safe-area-inset-top   ), 15px);
 					padding-left  : max(env(safe-area-inset-left  ), 10px);
 					padding-right : max(env(safe-area-inset-right ), 10px);
@@ -28,7 +31,7 @@ export default () => {
 				}
 			}
 
-			header nav {
+			nav {
 			  display: flex;
 			  justify-content: space-between;
 			  flex-wrap: wrap;
@@ -36,12 +39,12 @@ export default () => {
 				margin: auto;
 			}
 
-			header span {
+			span {
 				margin: 5px 5rem 5px 0;
 			  font-weight: 700;
 			}
 
-			header ul {
+			ul {
 				list-style-type: none;
 			  display: flex;
 			  padding: 0;
@@ -49,21 +52,21 @@ export default () => {
 			  flex-wrap: wrap;
 			}
 
-			header li {
+			li {
 				padding: 0 10px 0 0;
 				font-size: 1em;
 			}
 
-			header a {
+			a {
 				color: inherit;
 			}
 
-			header span a:hover {
+			span a:hover {
 				border-bottom: 2px solid;
 				text-decoration: none;
 			}
 
-			header li a:hover {
+			li a:hover {
 				border-bottom: 1px solid;
 				text-decoration: none;
 			}
