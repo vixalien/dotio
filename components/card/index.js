@@ -26,19 +26,19 @@ let Title = ({ heading, href, link }) => {
 
 			a {
 				margin: auto;
-				font-size: 1.3rem;
+				font-size: 1.1rem;
+				color: var(--link);
 				border-bottom: none;
 			}
 
 			a:hover {
-				border-bottom: none;
-				color: var(--link);
+				border-bottom: bottom;
 			}
 		`}</style>
 	</F>
 }
 
-let Card = ({ title, href, link, children }) => {
+let Card = ({ title, href, link, column = '', children }) => {
 	return <>
 		<section>
 			<Container>
@@ -47,7 +47,7 @@ let Card = ({ title, href, link, children }) => {
 					href={href}
 					link={link}
 				/>
-				<div>
+				<div className={(column && 'column')}>
 					{children}
 				</div>
 			</Container>
@@ -55,7 +55,14 @@ let Card = ({ title, href, link, children }) => {
 		<style jsx>{`
 			div {
 				display: flex;
-				overflow: auto;
+			  justify-content: left;
+			  flex-wrap: wrap;
+
+			  margin-top: 1rem;
+			}
+
+			.column {
+				flex-direction: column;
 			}
 		`}</style>
 	</>

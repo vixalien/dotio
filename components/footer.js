@@ -16,7 +16,7 @@ export default () => {
 					}}
 				/>
 				<div><a href="/">vixalien.io</a></div>
-				<div> </div>
+				<div className="space"/>
 				<div>Have a nice day!</div>
 				<div>&copy; {year} - v{version}</div>
 			</nav>
@@ -29,12 +29,12 @@ export default () => {
 			}
 
 			nav {
-			  padding: 15px 10px;
+			  padding: 15px 10px 30px;
 			}
 
 			@supports (padding: max(env(safe-area-inset-left, 0px))) {
 				nav {
-					padding-bottom: max(env(safe-area-inset-bottom), 15px);
+					padding-bottom: max(env(safe-area-inset-bottom), 30px);
 					padding-left  : max(env(safe-area-inset-left  ), 10px);
 					padding-right : max(env(safe-area-inset-right ), 10px);
 					max-width: calc(600px + max(env(safe-area-inset-right ), 10px) + max(env(safe-area-inset-left  ), 10px));
@@ -52,6 +52,10 @@ export default () => {
 			div {
 				margin: 5px 5rem 5px 0;
 			}	
+
+			.space {
+				height: 10px;
+			}
 
 			a {
 				color: inherit;

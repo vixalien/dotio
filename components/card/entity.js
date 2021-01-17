@@ -20,27 +20,11 @@ let Entity = ({ src, alt, text, href }) => {
 
 			.entity {
 			  display: flex;
-			  margin: 10px;
+			  margin: 5px;
 			  flex-direction: column;
 			  cursor: pointer;
 			  transition: .3s;
 			  border-bottom: 0;
-			}
-
-			.entity:first-child {
-				margin-left: 0;
-			}
-
-			.entity:last-child {
-				margin-right: 0;
-			}
-
-			.entity:hover, .entity:active, .entity:focus {
-				color: var(--link);
-			}
-
-			.entity:hover span, .entity:active span, .entity:focus span{
-				opacity: 0;
 			}
 
 			.entity .radius {
