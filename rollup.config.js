@@ -4,7 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import inject from "@rollup/plugin-inject";
 import { terser } from "rollup-plugin-terser";
 
-import { external, getInputFromGlobs, resolveRoot, resolveHTML } from "./config/plugins/index";
+import { external, getInputFromGlobs, resolveRoot, resolveHTML, json } from "./config/plugins/index";
 
 // No code-splitting
 let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
@@ -12,7 +12,7 @@ let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
 	return {
 		input: { [key]: value },
 		output: [
-			{
+			{ 
 				dir: '.build/views/',
 				format: 'umd',
 				name: 'JSH',
@@ -33,7 +33,7 @@ let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
 				babelHelpers: "bundled",
 			}),
 			inject({ React: 'react' }),
-			terser(),
+			json()
 		]
 	}
 });
