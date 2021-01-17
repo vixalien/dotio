@@ -152,12 +152,12 @@ main {
 	}
 }
 
-main a, main a:hover {
+main a, main a:hover, section a, section a:hover {
 	border-bottom: 1px solid;
 	text-decoration: none;
 	color: inherit;
 }
 
-main a:hover {
+section a:hover {
 	color: var(--link);
 }
