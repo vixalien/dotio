@@ -1,12 +1,12 @@
 import Header from "components/header";
 import Welcome from "components/welcome";
-import Card from "components/card";
+import Projects from "components/card/projects";
 
 export default () => {
 	return (<>
 	<Header/>
 	<Welcome/>
-	<Card />
+	<Projects/>
 	<main>
 		<h2>Hello</h2>
 		<p>Lorem ipsum dolor sit <a href="/">amet</a>, consectetur adipisicing elit, sed do eiusmod
