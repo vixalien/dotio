@@ -26,10 +26,6 @@ let Entity = ({ src, alt, text }) => {
 			  display: flex;
 			  margin: 10px;
 			  flex-direction: column;
-			  /* overflow: hidden; */
-			  width: 120px;
-			  height: 120px;
-			  flex: 1;
 			  cursor: pointer;
 			  transition: .3s;
 			}
@@ -49,7 +45,9 @@ let Entity = ({ src, alt, text }) => {
 				overflow: hidden;
 				border-radius: 20px;
 				position: relative;
-				border: 1px solid;
+				border: 3px solid;
+				width: 120px;
+				height: 120px;
 			}
 		`}</style>
 	</>
