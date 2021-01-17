@@ -2,7 +2,7 @@ let Entity = ({ src, alt, text }) => {
 	return <>
 		<div className="entity">
 			<div className="radius">
-				<img src={src} alt={alt}/>
+				<img src={src} alt={alt} width="120px" height="120px"/>
 				<span>{text}</span>
 			</div>
 		</div>
@@ -12,7 +12,7 @@ let Entity = ({ src, alt, text }) => {
 			  padding: 40px 15px 10px 10px;
 			  position: absolute;
 			  bottom: 0;
-			  background: linear-gradient(0deg, #fff9, #ff5 60%, transparent 80%);
+			  background: linear-gradient(0deg, #fff9, #fff5 60%, transparent 80%);
 			  right: 0;
 			  left: 0;
 				color: #000;
@@ -50,13 +50,6 @@ let Entity = ({ src, alt, text }) => {
 				border-radius: 20px;
 				position: relative;
 				border: 1px solid;
-			}
-
-			.entity img {
-			  height: 120px;
-			  width: 120px;
-			  overflow: hidden;
-			  border-radius: 20px;
 			}
 		`}</style>
 	</>
