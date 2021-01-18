@@ -27,10 +27,7 @@
   "homepage": "https://github.com/vixalien/vixalien.io#readme",
   "dependencies": {
     "@babel/core": "^7.12.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
-    "@babel/plugin-transform-react-jsx": "^7.12.5",
     "@babel/preset-react": "^7.12.5",
-    "@mdx-js/loader": "^1.6.21",
     "@mdx-js/mdx": "^1.6.21",
     "@mdx-js/react": "^1.6.21",
     "@rollup/plugin-babel": "^5.2.1",
@@ -42,6 +39,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "front-matter": "^2.3.0",
     "glob-array": "^1.0.0",
     "html-minifier": "^4.0.0",
     "morgan": "^1.10.0",
