@@ -9,7 +9,7 @@
   "scripts": {
     "build-rollup": "rollup -c",
     "build-custom": "node config/build",
-    "build": "npm run build-rollup && npm run build-custom",
+    "build": "npm run build-custom && npm run build-rollup",
     "start": "node .build/server"
   },
   "repository": {
