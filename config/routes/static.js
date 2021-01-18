@@ -6,6 +6,9 @@ process.env.NODE_ENV = process.env.VERCEL_ENV || process.env.NODE_ENV || 'produc
 
 export default (app) => {
 
+	// Compiled JS
+	app.use(express.static(path.join(process.cwd(), '.build', 'js')));
+
 	// Public
 	app.use(express.static(path.join(process.cwd(), 'public/')));
 

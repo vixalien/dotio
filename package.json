@@ -7,7 +7,9 @@
     "lib": "lib"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build-rollup": "rollup -c",
+    "build-js": "node config/build/js",
+    "build": "npm run build-rollup && npm run build-js",
     "start": "node .build/server"
   },
   "repository": {
