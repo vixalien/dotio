@@ -25,12 +25,10 @@ export default (parent, options) => {
     var handler;
     var method;
     var url;
-    let start;
-    if (name == 'index') {
-      start = '/';
-    } else {
-      start = '/' + name;
-    }
+    let start = '/';
+    let plural = '/';
+    if (name != 'index') start = '/' + name;
+    if (name != 'index') plural = '/' + (obj.plural || (name + 's'));
 
     // allow specifying the view engine
     if (obj.engine) app.set('view engine', obj.engine);
@@ -40,7 +38,7 @@ export default (parent, options) => {
     // on the exported methods
     for (var key in obj) {
       // "reserved" exports
-      if (~['name', 'prefix', 'engine', 'before', 'after'].indexOf(key)) continue;
+      if (~['name', 'prefix', 'engine', 'before', 'after', 'plural'].indexOf(key)) continue;
       // route exports
       switch (key) {
         case 'show':
@@ -49,11 +47,7 @@ export default (parent, options) => {
           break;
         case 'list':
           method = 'get';
-          if (start == '/') {
-            url = start;
-          } else {
-            url = start + 's';
-          }
+          url = plural;
           break;
         case 'edit':
           method = 'get';
