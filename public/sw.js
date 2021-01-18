@@ -13,7 +13,7 @@ function fromCache(request) {
 function toCache(request, response) {
 	return caches.open(CACHE).then(function (cache) {
 		if (response.status < 200 || response.status > 399) return "not stored"
-		return cache.put(request, response);
+		return cache.put(request, response).then(() => response);
 	});
 }
 
@@ -62,7 +62,7 @@ let NetworkFirst = () => {
 
 let CacheFirst = () => {
 	return {
-		onfetch: (req) => fromCache(req).catch(() => fetch(req))
+		onfetch: (req) => fromCache(req).catch(() => fetch(req).then(res => toCache(req, res)))
 	}
 }
 
@@ -88,6 +88,7 @@ let otherSiteRegex = `^((?!${location.host}).)*$`
 let Paths = {
 	// requests to other sites
 	[otherSiteRegex]: NetworkOnly,
+	"/favicon/.*": CacheFirst,
 	"\.json$": StaleWhileRevalidate,
 	"/lib/\.*": CacheFirst,
 	"\.(css|js)$": StaleWhileRevalidate,
