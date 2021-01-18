@@ -25,10 +25,11 @@ export default (parent, options) => {
     var handler;
     var method;
     var url;
+    let start;
     if (name == 'index') {
-      name = '/';
+      start = '/';
     } else {
-      name = '/' + name;
+      start = '/' + name;
     }
 
     // allow specifying the view engine
@@ -44,27 +45,27 @@ export default (parent, options) => {
       switch (key) {
         case 'show':
           method = 'get';
-          url = name + '/:' + name + '_id';
+          url = start + '/:' + name + '_id';
           break;
         case 'list':
           method = 'get';
-          if (name == '/') {
-            url = name;
+          if (start == '/') {
+            url = start;
           } else {
-            url = name + 's';
+            url = start + 's';
           }
           break;
         case 'edit':
           method = 'get';
-          url = name + '/:' + name + '_id/edit';
+          url = start + '/:' + name + '_id/edit';
           break;
         case 'update':
           method = 'put';
-          url = name + '/:' + name + '_id';
+          url = start + '/:' + name + '_id';
           break;
         case 'create':
           method = 'post';
-          url = name;
+          url = start;
           break;
         case 'index':
           method = 'get';
