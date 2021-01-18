@@ -2,12 +2,12 @@
  * Module dependencies.
  */
 
-exports.engine = 'js';
+var db = require('../db');
 
-exports.list = function(req, res, next){
-  res.render('index');
+exports.engine = 'md';
+
+exports.show = function(req, res, next){
+	var blog = req.params.blog_id;
+  if (!blog) return next('route');
+  res.render('../../blog/hello', { blog });
 };
-
-exports.after = (req, res, next) => {
-	console.log("Done with post");
-}
