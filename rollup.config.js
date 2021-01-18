@@ -66,7 +66,7 @@ export default [
 			terser()
 		]
 	},
-	// Build wrapper
+	// Build wrappers
 	{
 		input: './config/lib/react/wrapper.js',
 		output: [
@@ -88,6 +88,31 @@ export default [
 			}),
 			commonjs(),
 			terser()
+		]
+	},
+	{
+		input: './config/lib/react/wrapper-mdx.js',
+		output: [
+			{
+				file: '.build/lib/wrapper-mdx.js',
+				format: 'umd',
+				name: 'wrapper',
+				globals: {
+					react: "React"
+				}
+			},
+		],
+		plugins: [
+			resolveRoot(),
+			resolve(),
+			external(),
+			babel({
+				exclude: "node_modules/**",
+				babelHelpers: "bundled",
+			}),
+			inject({ React: 'react' }),
+			commonjs(),
+			json()
 		]
 	},
 	// Build Javascript bundles and prepend import React (for Server consumption)
