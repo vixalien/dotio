@@ -3,7 +3,7 @@ export default () => {
 		<footer>
 			<nav>
 				<hr/>
-				<a href="/#top">↑ Top</a>
+				<a href="#top">↑ Top</a>
 				<div><a href="/">vixalien.io</a></div>
 			</nav>
 		</footer>
