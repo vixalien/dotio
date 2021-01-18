@@ -1,8 +1,3 @@
-import List from './list';
-import { version } from 'package.json';
-
-let year = (new Date).getFullYear();
-
 export default () => {
 	return (<>
 		<footer>
