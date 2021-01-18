@@ -1,33 +1,14 @@
-import List from './list';
-import { version } from 'package.json';
-
-let year = (new Date).getFullYear();
-
 export default () => {
 	return (<>
 		<footer>
 			<nav>
-				<List
-					links={{
-						'#top': <>↑ Top</>,
-						'/projects': 'Projects',
-						'/posts': 'Posts',
-						'/about': 'About'
-					}}
-				/>
+				<hr/>
+				<a href="#top">↑ Top</a>
 				<div><a href="/">vixalien.io</a></div>
-				<div className="space"/>
-				<div>Have a nice day!</div>
-				<div>&copy; {year} - v{version}</div>
 			</nav>
 		</footer>
 		<style jsx>{`
 			/* Lil Footer */
-			footer {
-			  color: #b2b6bb;
-			  background-color: #0a1826;
-			}
-
 			nav {
 			  padding: 15px 10px 30px;
 			}
@@ -49,17 +30,22 @@ export default () => {
 				margin: auto;
 			}
 
-			div {
-				margin: 5px 5rem 5px 0;
-			}	
-
-			.space {
-				height: 10px;
+			hr {
+				padding-bottom: 20px;
 			}
 
 			a {
+				margin: 0;
 				color: inherit;
-				margin: auto;
+			}
+
+			div {
+				margin: 5px 5rem 5px 0;
+			}
+
+			div a {
+				color: inherit;
+				margin: 0;
 				border-bottom: 2px solid transparent;
 				font-size: 2rem;
 				font-weight: 700;

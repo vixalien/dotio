@@ -95,6 +95,7 @@ dl,
 table {
 	margin: 0 0 1.5rem 0;
 	font-size: 1.15rem;
+	line-height: 1.4;
 }
 
 @media screen and (min-width: 750px) {
