@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require('path');
 
 import react from './views/react';
+import markdown from './views/mdx/index';
 
 let serve = (filePath, options, callback) => { // define the template engine
   fs.readFile(filePath, function (err, content) {
@@ -19,9 +20,13 @@ export default (app) => {
 	app.engine('ejs', serve);
 	app.engine('hbs', serve);
 
-	// markdown
+	// react
 	app.engine('js', react);
 	app.engine('jsx', react);
+
+	// markdown
+	app.engine('md', markdown);
+	app.engine('mdx', markdown);
 
 	app.set('view engine', 'js');
 
