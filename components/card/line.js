@@ -1,13 +1,20 @@
-let Entity = ({ src, alt, title, text, href }) => {
+let Entity = ({ src, alt, title, date, text, href }) => {
 	return <>
 		<a className="entity" href={href}>
 			<h3>{title} &rarr;</h3>
+			<h4>{date}</h4>
 			<p>{text}</p>
 		</a>
 		<style jsx>{`
 			h3 {
 			  margin: 0;
 			  font-size: 1.3rem;
+			}
+
+			h4 {
+				margin: 0;
+			  font-size: 0.9rem;
+			  margin-bottom: 10px;
 			}
 
 			 p {

@@ -1,11 +1,11 @@
 import Card from './index';
-import Entity from './entity';
+import Entity from './line';
 
 let SampleProject = () => {
 	return <Entity
+		title="Title"
 		text="Sample Project"
-		src="/favicon/android-chrome-192x192.png"
-		alt="Sample Project"
+		date="Tue Jan 19 2021"
 		href="/project/random"
 	/>
 }

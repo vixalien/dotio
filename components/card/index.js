@@ -57,9 +57,8 @@ let Card = ({ hr, title, href, link, column = '', children }) => {
 			div {
 				display: flex;
 			  justify-content: left;
-			  flex-wrap: wrap;
-
 			  margin-top: 1rem;
+			  flex-direction: column;
 			}
 
 			.column {
