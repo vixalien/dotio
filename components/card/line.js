@@ -16,7 +16,7 @@ let Entity = ({ src, alt, title, text, href }) => {
 			}
 
 			.entity:hover, .entity:active, .entity:focus {
-				box-shadow: 0 0 15px 0px #0000009c;
+				box-shadow: 0 0 0px 3px #bac7d4;
 			}
 
 			.entity {
