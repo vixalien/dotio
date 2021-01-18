@@ -121,3 +121,20 @@ self.addEventListener('fetch', async (evt) => {
 		}
 	}
 });
+
+// Content indexing
+if (index in serviceWorker.registration) {
+	serviceWorker.registration.index.add({
+		id: 'home',
+		url: '/',
+		launchUrl: '/',
+		title: 'vixalien.io',
+		description: 'Blog for vixalien',
+		icons: [{
+			src: '/favicon/android-chrome-192x192.png',
+			sizes: '192x192',
+			type: 'image/png',
+		}],
+		category: 'homepage'
+	})
+}
