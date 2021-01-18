@@ -38,7 +38,7 @@ let Title = ({ heading, href, link }) => {
 	</F>
 }
 
-let Card = ({ title, href, link, column = '', children }) => {
+let Card = ({ hr, title, href, link, column = '', children }) => {
 	return <>
 		<section>
 			<Container>
@@ -51,6 +51,7 @@ let Card = ({ title, href, link, column = '', children }) => {
 					{children}
 				</div>
 			</Container>
+			{hr ? <Container tb={false}><hr/></Container> : null}
 		</section>
 		<style jsx>{`
 			div {

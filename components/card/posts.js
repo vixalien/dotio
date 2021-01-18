@@ -28,6 +28,7 @@ let ProjectsCard = () => {
 		link="View All"
 		href="/posts"
 		column
+		hr={true}
 	>
 		<SamplePost text={random()}/>
 		<SamplePost text={random()}/>
