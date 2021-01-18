@@ -13,8 +13,7 @@ let observer = new IntersectionObserver(entries => {
       const url = normalize(entry.target.href);
     	if (prefetched.includes(url)) return;
     	prefetched.push(url);
-    	prefetch(url)
-    		.catch(err => {})
+    	prefetch(url);
     }
   })
 });
