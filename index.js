@@ -22,6 +22,7 @@ app.use(compression());
 // set url on request
   app.use((req, res, next) => {
     res.locals.url = req._parsedUrl._raw;
+    res.app = app;
     next();
   })
 

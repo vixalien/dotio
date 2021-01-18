@@ -126,6 +126,14 @@ ol li ol {
 	margin-bottom: 0;
 }
 
+/* inline code */
+code {
+  padding: 3px 5px;
+  border-radius: 5px;
+  background: lightgray;
+  font-size: 0.9em;
+}
+
 .description h2, h2.description {
 	color: var(--secondary);
 	font-weight: 400;
