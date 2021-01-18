@@ -8,8 +8,8 @@ export default () => {
 	return (<>
 	<Header/>
 	<Welcome/>
-	<Projects/>
 	<Posts/>
+	<Projects/>
 	<Footer/>
 	</>
 	)
