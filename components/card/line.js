@@ -13,7 +13,7 @@ let Entity = ({ src, alt, title, date, text, href }) => {
 
 			h4 {
 				margin: 0;
-			  font-size: 0.9rem;
+			  font-size: 1rem;
 			  margin-bottom: 10px;
 			}
 
