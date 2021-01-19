@@ -1,9 +1,9 @@
 import List from './list';
 import Container from './container';
 
-export default () => {
+export default ({ hero = false }) => {
 	return (<>
-		<header>
+		<header className={hero ? 'hero' : ''}>
 			<Container tag='nav' tb={'15'}>
 				<span><a href="/">vixalien.io</a></span>
 				<List
@@ -43,6 +43,14 @@ export default () => {
 			span a:hover {
 				border-bottom: 2px solid;
 				text-decoration: none;
+			}
+			
+			header.hero :global(nav) {
+				flex-direction: column;
+			  font-size: 1.2em;
+			}
+			li.hero {
+				font-size: 20px;
 			}
 		`}</style>
 	</>)

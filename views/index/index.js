@@ -6,7 +6,7 @@ import Posts from "components/card/posts";
 
 export default () => {
 	return (<>
-	<Header/>
+	<Header hero={true}/>
 	<Welcome/>
 	<Posts/>
 	<Projects/>
