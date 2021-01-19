@@ -9,7 +9,7 @@ jobs:
         with:
           node-version: '12'
       - run: npm install
-      - run: npm build
+      - run: npm run build
       - uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
