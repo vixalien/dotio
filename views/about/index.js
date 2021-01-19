@@ -1,12 +1,16 @@
 import Header from "components/header";
+import Intro from "components/intro";
+import Container from "components/container";
+import Footer from "components/footer";
 
 export default () => {
 	return (<>
 	<Header/>
-	<main>
-		<h1>Building the site</h1>
-		<h2 className="description">I only had one thing to start from: scratch</h2>
-		<hr/>
+	<Intro
+		title="Building the site"
+		description="I only had one thing to start from: scratch"
+	/>
+	<Container tag="main">
 		<h2>Hello</h2>
 		<p>Lorem ipsum dolor sit <a href="/">amet</a>, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -41,7 +45,8 @@ export default () => {
 				</ol>
 			</li>
 		</ul>
-	</main>
+	</Container>
+	<Footer/>
 	</>
 	)
 }
