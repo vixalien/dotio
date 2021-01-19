@@ -1,3 +1,4 @@
+(() => {
 console.log('Hello from prefetch!');
 
 let prefetched = [];
@@ -72,4 +73,4 @@ let prefetch = url => {
 	} else {
 		doPrefetch(url);
 	}
-}
+}})();
