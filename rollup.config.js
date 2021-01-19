@@ -135,6 +135,7 @@ export default [
 				babelHelpers: "bundled",
 			}),
 			resolveRoot(),
+			json(),
 			terser()
 		]
 	},

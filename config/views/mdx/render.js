@@ -8,7 +8,7 @@ import renderMdx from '@mdx-js/mdx'
 import {MDXProvider, mdx} from '@mdx-js/react'
 
 // import babelrc
-const babelrc = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.babelrc.json'), 'utf8'))
+import babelrc from '.babelrc.json'
 
 const transform = code => babel.transform(code, babelrc).code
 
