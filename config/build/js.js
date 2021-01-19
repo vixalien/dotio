@@ -12,6 +12,7 @@ let js = glob.sync('js/**/*.js')
 let resolve = link => path.resolve(process.cwd(), link);
 let resolveBuild = link => path.resolve(process.cwd(), '.build', link);
 
+if(!fs.existsSync(resolveBuild('.'))) fs.mkdirSync(resolveBuild('.'))
 if(!fs.existsSync(resolveBuild('js'))) fs.mkdirSync(resolveBuild('js'))
 
 js.map(async ([src, dest]) => {
