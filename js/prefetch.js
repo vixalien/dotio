@@ -1,5 +1,4 @@
 (() => {
-console.log('Hello from prefetch!');
 
 let prefetched = [];
 
@@ -7,6 +6,8 @@ let normalize = (url) => {
   url = new URL(url);
   return url.origin + url.pathname;
 }
+
+prefetched.push(normalize(window.location))
 
 let observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
