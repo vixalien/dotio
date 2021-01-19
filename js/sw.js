@@ -13,7 +13,7 @@ function fromCache(request) {
 function toCache(request, response) {
 	return caches.open(CACHE).then(function (cache) {
 		if (response.status < 200 || response.status > 399) return "not stored"
-		return cache.put(request, response).then(() => response);
+		return cache.put(request, response.clone()).then(() => response);
 	});
 }
 
@@ -88,9 +88,11 @@ let otherSiteRegex = `^((?!${location.host}).)*$`
 let Paths = {
 	// requests to other sites
 	[otherSiteRegex]: NetworkOnly,
+	"sw\.js": NetworkOnly,
 	"/favicon/.*": CacheFirst,
 	"\.json$": StaleWhileRevalidate,
 	"/lib/\.*": CacheFirst,
+	"bundle.production.min.js": CacheFirst,
 	"\.(css|js)$": StaleWhileRevalidate,
 	"/offline(.js)?$": CacheOnly,
 	"\.*": useOffline(StaleWhileRevalidate),
@@ -98,8 +100,7 @@ let Paths = {
 
 
 addEventListener('install', () => Precache([
-	'/lib/react.production.min.js',
-	'/lib/react-dom.production.min.js',
+	'/bundle.production.min.js',
 	'/lib/hydrate.js',
 	'/lib/wrapper.js',
 	'/offline',
@@ -117,14 +118,14 @@ self.addEventListener('fetch', async (evt) => {
 			console.debug('[SW]', 'Loading:  ', evt.request.url, 'with: ', Paths[key].name);
 			evt.waitUntil(waitUntil(evt.request));
 			evt.respondWith(handler.onfetch(evt.request))
-			break;
+			return;
 		}
 	}
 });
 
 // Content indexing
-if (index in serviceWorker.registration) {
-	serviceWorker.registration.index.add({
+if ('index' in registration) {
+	registration.index.add({
 		id: 'home',
 		url: '/',
 		launchUrl: '/',
