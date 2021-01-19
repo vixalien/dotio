@@ -1,21 +1,17 @@
-let Container = ({ tb = true, rl = true, ...props }) => {
+let Container = ({ tb = true, rl = true, t = true, b = true, ...props }) => {
+	if (!tb) { t = false; b = false; };
+	let paddingTop    = (t  ? 'var(--padding-top)   ' : '0');
+	let paddingBottom = (b  ? 'var(--padding-bottom)' : '0');
+	let paddingRight  = (rl ? 'var(--padding-right) ' : '0');
+	let paddingLeft   = (rl ? 'var(--padding-left)  ' : '0');
 	return <>
 		<div {...props}/>
 		<style jsx>{`
 			div {
-				padding: ${tb ? '30px' : '0'} ${rl ? '10px' : '0'};
-				max-width: 620px;
+				padding: ${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft};
+				max-width: var(--max-width);
+				width: 100%;
 				margin: auto;
-			}
-
-			@supports (padding: max(env(safe-area-inset-left, 0px))) {
-				div {
-					${rl ? '' : `
-					padding-left  : max(env(safe-area-inset-left  ), 10px);
-					padding-right : max(env(safe-area-inset-right ), 10px);
-					`}
-					max-width: calc(600px + max(env(safe-area-inset-right ), 10px) + max(env(safe-area-inset-left  ), 10px));
-				}
 			}
 		`}</style>
 	</>

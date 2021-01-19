@@ -14,6 +14,23 @@
 
 	--heading-fg: #000;
 	--link: #107aff;
+
+	/* Paddings */
+	--padding-top:    30px;
+	--padding-bottom: 30px;
+	--padding-right:  10px;
+	--padding-left:   10px;
+	--max-width: 620px;
+}
+
+@supports (padding: max(env(safe-area-inset-left, 0px))) {
+	:root {
+		--padding-top:    max(env(safe-area-inset-top     ), 30px);
+		--padding-bottom: max(env(safe-area-inset-bottom  ), 30px);
+		--padding-right:  max(env(safe-area-inset-right   ), 10px);
+		--padding-left:   max(env(safe-area-inset-left    ), 10px);
+		--max-width: calc(600px + var(--padding-right) + var(--padding-left));
+	}
 }
 
 @font-face {
@@ -160,14 +177,4 @@ main {
 		padding-right : max(env(safe-area-inset-right ), 10px);
 		max-width: calc(600px + max(env(safe-area-inset-right ), 10px) + max(env(safe-area-inset-left  ), 10px));
 	}
-}
-
-main a, main a:hover, section a, section a:hover {
-	border-bottom: 1px solid;
-	text-decoration: none;
-	color: inherit;
-}
-
-section a:hover {
-	color: var(--link);
 }
