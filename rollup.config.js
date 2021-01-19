@@ -20,7 +20,8 @@ let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
 				sourcemap: 'inline',
 				sourcemapExcludeSources: true,
 				globals: {
-					react: "React"
+					react: "React",
+					'styled-jsx/style': "_JSXStyle"
 				}
 			}
 		],
