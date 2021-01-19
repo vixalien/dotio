@@ -1,21 +1,22 @@
-let Container = ({ tb = true, rl = true, t = true, b = true, ...props }) => {
-	if (!tb) { t = false; b = false; };
+let Container = ({ tag = 'div', tb = true, rl = true, t = false, b = false, ...props }) => {
+	if (tb) { t = tb; b = tb; };
 	let pad = (param, variable) => {
 		if (param) {
 			if (parseInt(param)) {
 				return parseInt(param) + 'px';
 			} else {
-				return 'var(--padding-' + variable + ');';
+				return 'var(--padding-' + variable + ')';
 			}
 		} else {
 			return '0';
 		}
 	}
+	let Tag = ({ children, ...props }) => React.createElement(tag, props, children)
 	return <>
-		<div {...props}/>
+		<Tag className="container" {...props}/>
 		<style jsx>{`
-			div {
-				padding: ${pad(t, top)} ${pad(r, right)} ${pad(b, bottom)} ${pad(l, left)};
+			.container {
+				padding: ${pad(t, 'top')} ${pad(rl, 'right')} ${pad(b, 'bottom')} ${pad(rl, 'left')};
 				max-width: var(--max-width);
 				width: 100%;
 				margin: auto;
