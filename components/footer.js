@@ -3,9 +3,9 @@ import Container from 'components/container';
 export default () => {
 	return (<>
 		<footer>
-			<Container t={'50'}>
+			<Container tb={'50'}>
 				<hr/>
-				<a href="#top">↑ Top</a>
+				<a className="top" href="#top">↑ Top</a>
 				<div><a href="/">vixalien.io</a></div>
 			</Container>
 		</footer>
@@ -21,6 +21,11 @@ export default () => {
 
 			a {
 				color: inherit;
+			}
+
+			a.top {
+				display: inline-block;
+  			margin: 10px 0;
 			}
 
 			div {

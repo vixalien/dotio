@@ -30,14 +30,20 @@ let Title = ({ heading, href, link }) => {
 				color: var(--link);
 			}
 
+			a:hover {
+				border-bottom-color: currentColor;
+			}
+
 			:global([data-dark]) a {
 				border: 1px solid;
 			  padding: 5px 10px;
 			  border-radius: 10px;
+				color: var(--fg);
+				transition: color .3s;
 			}
 
-			a:hover {
-				border-bottom: bottom;
+			:global([data-dark]) a:hover {
+				color: var(--link)
 			}
 		`}</style>
 	</F>

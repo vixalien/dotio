@@ -7,11 +7,6 @@ import renderWithReact from './render';
 
 let resolve = (...args) => path.join(process.cwd(), '.build', ...args)
 let read = (...args) => fs.readFileSync(...args).toString();
-let deploy_url = () => {
-	let deploy_url = process.env.VERCEL_URL || process.env.URL || 'vixaliendotio.vercel.app';
-	deploy_url.startsWith('localhost') ? deploy_url = "http://" + deploy_url : deploy_url = "https://" + deploy_url
-	return deploy_url;
-}
 
 let templatePath = resolve('lib', 'template.html');
 let wrapperPath = resolve('lib', 'wrapper-mdx.js');
@@ -41,7 +36,7 @@ export default async (filePath, options = {}, callback) => { // define the templ
 		rendered = template
 			.replace('<!-- styles -->', styles)
 			.replace(/<!-- start-hydrate -->([\s\S]*)<!-- end-hydrate -->/g, '')
-			.replace('<!-- canonical-url -->', deploy_url() + props.url)
+			.replace('<!-- canonical-url -->', process.DEPLOY_URL + props.url)
 			.replace('<!-- component-placeholder -->', rendered)
 		
 		return callback(null, rendered);

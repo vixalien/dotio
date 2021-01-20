@@ -17,11 +17,11 @@ export default () => {
 			I love to build things from scratch while I can. Here you can find my projects,
 			posts and whatever. Stay tuned!
 		</p>
-		<h3>Settings</h3>
+		<h2>Settings</h2>
 		<p>
 			<ThemeButton/>
 		</p>
-		<h3>Links</h3>
+		<h2>Links</h2>
 		<p>
 			<Button text="Github" icon="github" href="https://www.github.com/vixalien"/>
 			<Button text="Donate" icon="paypal" href="https://www.paypal.com"/>
