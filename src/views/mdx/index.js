@@ -33,8 +33,11 @@ export default async (filePath, options = {}, callback) => { // define the templ
 		// flush CSS
 		const styles = flushToHTML();
 
+		let html = `<html lang="en" ${options.theme == 'dark' ? 'data-dark': ''}>`;
+
 		rendered = template
 			.replace('<!-- styles -->', styles)
+			.replace(/<!-- start-html -->([\s\S]*)<!-- end-html -->/g, html)
 			.replace(/<!-- start-hydrate -->([\s\S]*)<!-- end-hydrate -->/g, '')
 			.replace('<!-- canonical-url -->', process.DEPLOY_URL + props.url)
 			.replace('<!-- component-placeholder -->', rendered)
