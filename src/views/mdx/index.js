@@ -38,7 +38,6 @@ export default async (filePath, options = {}, callback) => { // define the templ
 		rendered = template
 			.replace('<!-- styles -->', styles)
 			.replace(/<!-- start-html -->([\s\S]*)<!-- end-html -->/g, html)
-			.replace(/<!-- start-hydrate -->([\s\S]*)<!-- end-hydrate -->/g, '')
 			.replace('<!-- canonical-url -->', process.DEPLOY_URL + props.url)
 			.replace('<!-- component-placeholder -->', rendered)
 		

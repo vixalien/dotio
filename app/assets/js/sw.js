@@ -100,9 +100,6 @@ let Paths = {
 
 
 addEventListener('install', () => Precache([
-	'/bundle.production.min.js',
-	'/lib/hydrate.js',
-	'/lib/wrapper.js',
 	'/offline',
 	'/',
 	'/unbox.css',
