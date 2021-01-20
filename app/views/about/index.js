@@ -2,49 +2,30 @@ import Header from "components/header";
 import Intro from "components/intro";
 import Container from "components/container";
 import Footer from "components/footer";
+import Button from "components/button";
+import ThemeButton from "components/theme-button";
 
 export default () => {
 	return (<>
 	<Header/>
 	<Intro
-		title="Building the site"
-		description="I only had one thing to start from: scratch"
+		title="About vixalien"
 	/>
 	<Container tag="main">
-		<h2>Hello</h2>
-		<p>Lorem ipsum dolor sit <a href="/">amet</a>, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p>
+			Hi! I'm Shema Angelo, or vixalien. I'm a web developer and (designer? maybe).
+			I love to build things from scratch while I can. Here you can find my projects,
+			posts and whatever. Stay tuned!
 		</p>
-		<h3>Hello</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<h3>Settings</h3>
+		<p>
+			<ThemeButton/>
 		</p>
-		<h4>Hello</h4>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<h3>Links</h3>
+		<p>
+			<Button text="Github" icon="github" href="https://www.github.com/vixalien"/>
+			<Button text="Donate" icon="paypal" href="https://www.paypal.com"/>
 		</p>
-		<ul>
-			<li>An item</li>
-			<li>Another item</li>
-			<li>
-				<ol>
-					<li>An ordered item</li>
-					<li>Another item</li>
-				</ol>
-			</li>
-		</ul>
 	</Container>
 	<Footer/>
 	</>

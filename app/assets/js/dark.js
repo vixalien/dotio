@@ -1,19 +1,26 @@
-(() => {
-  // get cookie
-  let dark =
-    window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  dark
-    ? document.documentElement.setAttribute('data-dark', '')
-    : document.documentElement.removeAttribute('data-dark');
-  
-  let cookie = document.cookie.match(/express:sess=(\S*);?/);
-  
-  if (cookie && cookie[1]) {
-    cookie = JSON.parse(atob(cookie[1])).theme;
-    let cookieDark = cookie == 'dark';
-    if (cookieDark == dark) return;
-  }
-  fetch('/set-theme/' + (dark ? 'dark' : 'light'));
-})();
+window.THEME = {
+	prefersTheme() {
+		return (window.matchMedia &&
+		window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+	},
+	cookieTheme() {
+		let json = document.cookie.match(/express:sess=(\S*);?/)
+		if (!json) return false;
+		return JSON.parse(atob(json[1])).theme;
+	},
+	getTheme() {
+		return this.cookieTheme() || this.prefersTheme();
+	},
+	setTheme(theme) {
+		if(this.getTheme() == theme) return;
+		fetch('/set-theme/' + theme);
+		(theme == 'dark')
+		? document.documentElement.setAttribute('data-dark', '')
+		: document.documentElement.removeAttribute('data-dark');
+	},
+	init() {
+		if(!this.cookieTheme()) this.setTheme(this.prefersTheme());
+	}
+}
+
+window.THEME.init();

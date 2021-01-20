@@ -5,7 +5,7 @@ let Intro = ({ title, description }) => {
 		<Container tag='section' tb={false}>
 			<div>
 				<h1>{title}</h1>
-				<p className="description">{description}</p>
+				{description ? <p className="description">{description}</p> : null}
 			</div>
 			<hr/>
 		</Container>
