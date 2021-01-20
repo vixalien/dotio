@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build-rollup": "rollup -c",
-    "build-custom": "node config/build",
+    "build-custom": "node src/build",
     "build": "npm run build-custom && npm run build-rollup",
     "start": "node .build/server"
   },
