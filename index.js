@@ -5,7 +5,7 @@
 var express = require('express');
 var logger = require('morgan');
 var path = require('path');
-var session = require('express-session');
+var session = require('cookie-session');
 var compression = require('compression');
 // var methodOverride = require('method-override');
 
@@ -15,6 +15,19 @@ require('dotenv').config()
 import init from './config/init';
 
 var app = module.exports = express();
+
+app.set('trust proxy', 1) // trust first proxy
+
+app.use(session({
+  signed: false,
+  httpOnly: false
+}));
+
+// session
+app.use((req, res, next) => {
+  res.locals.theme = req.session.theme;
+  next();
+})
 
 // use compression
 app.use(compression());
@@ -42,13 +55,6 @@ if (!module.parent) app.use(logger('dev'));
 
 // serve static files
 app.use(express.static(path.join(process.cwd(), 'public')));
-
-// session support
-app.use(session({
-  resave: false, // don't save session if unmodified
-  saveUninitialized: false, // don't create session until something stored
-  secret: 'some secret here'
-}));
 
 // parse request bodies (req.body)
 app.use(express.urlencoded({ extended: true }))
@@ -94,6 +100,14 @@ app.use(function(err, req, res, next){
 app.get('/offline', (req, res) => {
   res.status(200);
   res.render("offline");
+});
+
+// set theme
+app.get('/set-theme/:theme', (req, res) => {
+  res.status(200);
+  let was = req.session.theme;
+  req.session.theme = req.params.theme;
+  res.send("theme set to: " + req.params.theme + "was: " + was);
 });
 
 // assume 404 since no middleware responded

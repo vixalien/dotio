@@ -18,6 +18,10 @@ let Welcome = () => {
 				background-image: linear-gradient(45deg, #dcb8fb, #ad4ef9);
 			}
 
+			:global([data-dark]) section {
+				background: var(--bg);
+			}
+
 			h1 {
 				font-size: 2.5rem;
 			}
@@ -26,6 +30,10 @@ let Welcome = () => {
 				color: var(--fg);
 				font-size: 1.3rem;
 				font-weight: 500;
+			}
+
+			a {
+				border-bottom-color: currentColor;
 			}
 		`}</style>
 	</>

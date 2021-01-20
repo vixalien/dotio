@@ -33,6 +33,15 @@
 	}
 }
 
+/* Dark Mode */
+[data-dark] {
+	--secondary: #8e8e8e;
+  --fg: #a0a0a0;
+  --bg: #030f1b;
+  --heading-fg: #fff;
+  --link: #fff;
+}
+
 @font-face {
 	font-family: 'Inter';
 	font-weight: 100 900;
@@ -148,7 +157,8 @@ ol li ol {
 code {
   padding: 3px 5px;
   border-radius: 5px;
-  background: lightgray;
+  background: var(--secondary);
+  color: var(--bg);
   font-size: 0.9em;
 }
 
