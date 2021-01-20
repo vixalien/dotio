@@ -14,8 +14,10 @@ let observer = new IntersectionObserver(entries => {
     if (entry.isIntersecting) {
       const url = normalize(entry.target.href);
     	if (prefetched.includes(url)) return;
+    	if (new URL(url, location).origin != location.origin) return;
     	prefetched.push(url);
-    	prefetch(url);
+    	prefetch(url)
+    		.catch(err => {})
     }
   })
 });
@@ -70,8 +72,8 @@ let prefetch = url => {
 	if (navigator.connection) {
 		let conn = navigator.connection;
 		if (conn.effectiveType.includes('2g') || conn.saveData) return;
-		doPrefetch(url);
+		return doPrefetch(url);
 	} else {
-		doPrefetch(url);
+		return doPrefetch(url);
 	}
 }})();
