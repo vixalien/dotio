@@ -9,6 +9,9 @@ export default (app) => {
 	// Compiled JS
 	app.use(express.static(path.join(process.cwd(), '.build', 'js')));
 
+	// Compiled CSS
+	app.use(express.static(path.join(process.cwd(), '.build', 'css')));
+
 	// Public
 	app.use(express.static(path.join(process.cwd(), 'public/')));
 

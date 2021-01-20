@@ -1,5 +1,6 @@
 let list = [
 	'./js',
+	'./css',
 	'./posts',
 	'./lib'
 ];
