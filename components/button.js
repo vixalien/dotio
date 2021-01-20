@@ -14,8 +14,17 @@ let getIcon = (icon) => {
 
 let Button = ({ text = "Button", icon=<span/>, href , ...props }) => {
 	let Icon = getIcon(icon);
+	// checking if link is external
+	let external = true;
+	let rel = {rel: null}
+	if (process.browser) {
+		if (new URL(href, window.location.origin).href.startsWith(window.location.origin)) external = false;
+	} else {
+		if (new URL(href, process.DEPLOY_URL).href.startsWith(process.DEPLOY_URL)) external = false;
+	}
+	if (external) rel.rel = "noopener noreferrer"
 	return <>
-		{href ? <a href={href} target="_blank" {...props}>
+		{href ? <a href={href} {...rel} target="_blank" {...props}>
 			<span className="icon b">{getIcon(icon)}</span>
 			<span>{text}</span>
 			<span className="icon e"><External/></span>
