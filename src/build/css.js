@@ -3,16 +3,16 @@ let path = require('path');
 let glob = require('glob');
 let clean = new (require('clean-css'));
 
-let js = glob.sync('css/**/*.css')
+let js = glob.sync('app/assets/css/**/*.css')
 	.map(path => [
 		path,
-		path.replace(/^css\//, '')
+		path.replace(/^app\/assets\/css\//, '')
 	]);
 
 let resolve = link => path.resolve(process.cwd(), link);
 let resolveBuild = link => path.resolve(process.cwd(), '.build', 'css', link);
 
-if(!fs.existsSync(resolveBuild('css'))) fs.mkdirSync(resolveBuild('css'))
+if(!fs.existsSync(resolveBuild('.'))) fs.mkdirSync(resolveBuild('.'))
 
 js.map(([src, dest]) => {
 	let code = clean.minify(fs.readFileSync(resolve(src), 'utf8'));

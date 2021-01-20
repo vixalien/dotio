@@ -2,8 +2,6 @@
  * Module dependencies.
  */
 
-var db = require('../db');
-
 exports.engine = 'md';
 
 exports.show = function(req, res, next){

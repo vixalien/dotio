@@ -7,7 +7,7 @@ var fs = require('fs');
 var path = require('path');
 
 export default (parent, options) => {
-  var dir = path.join(process.cwd(), 'controllers');
+  var dir = path.join(process.cwd(), 'app', 'controllers');
   var verbose = options.verbose;
   fs.readdirSync(dir).forEach(function(name){
     var file = path.join(dir, name)
@@ -32,7 +32,7 @@ export default (parent, options) => {
 
     // allow specifying the view engine
     if (obj.engine) app.set('view engine', obj.engine);
-    app.set('views', path.join(process.cwd(), 'views', name));
+    app.set('views', path.join(process.cwd(), '.build', 'views', name));
 
     // generate routes based
     // on the exported methods

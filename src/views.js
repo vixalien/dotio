@@ -31,5 +31,5 @@ export default (app) => {
 	app.set('view engine', 'js');
 
 	// set views for error and 404 pages
-	app.set('views', path.join(process.cwd(), 'views', 'default'));
+	app.set('views', path.join(process.cwd(), '.build', 'views' ,'default'));
 }

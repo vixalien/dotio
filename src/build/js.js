@@ -3,16 +3,16 @@ let path = require('path');
 let glob = require('glob');
 let terser = require('terser');
 
-let js = glob.sync('js/**/*.js')
+let js = glob.sync('app/assets/js/**/*.js')
 	.map(path => [
 		path,
-		path.replace(/^js\//, 'js/')
+		path.replace(/^app\/assets\/js\//, '')
 	]);
 
 let resolve = link => path.resolve(process.cwd(), link);
-let resolveBuild = link => path.resolve(process.cwd(), '.build', link);
+let resolveBuild = link => path.resolve(process.cwd(), '.build', 'js', link);
 
-if(!fs.existsSync(resolveBuild('js'))) fs.mkdirSync(resolveBuild('js'))
+if(!fs.existsSync(resolveBuild('.'))) fs.mkdirSync(resolveBuild('.'))
 
 js.map(async ([src, dest]) => {
 	fs.writeFileSync(resolveBuild(dest),

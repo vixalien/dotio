@@ -12,7 +12,7 @@ var compression = require('compression');
 // load env
 require('dotenv').config()
 
-import init from './config/init';
+import init from './init';
 
 var app = module.exports = express();
 

@@ -26,9 +26,8 @@ export default async (filePath, options, callback) => { // define the template e
 		let hydrate = read(hydratePath);	
 
 		// Load the file
-		let src = path.relative(process.cwd(), filePath);
-		let buildSrc = resolve('views', src);
-		let Content = await import(buildSrc).then(e => e.default);
+		let src = path.relative(path.join(process.cwd(), '.build'), filePath);
+		let Content = await import(filePath).then(e => e.default);
 
 		// Build props
 		let props = options;
