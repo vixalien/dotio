@@ -9,12 +9,8 @@ export default () => {
 	<Header/>
 	<Intro
 		title="Posts"
+		description="Here are accumulated articles I have written."
 	/>
-	<Container tag="main" b={0}>
-		<p>
-			Here are accumulated articles I have written.
-		</p>
-	</Container>
 	<Posts link={false}/>
 	<Footer/>
 	</>

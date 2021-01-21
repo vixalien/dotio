@@ -9,12 +9,8 @@ export default () => {
 	<Header/>
 	<Intro
 		title="Projects"
+		description="Articles about my different projects."
 	/>
-	<Container tag="main" b={0}>
-		<p>
-			Articles about my different projects.
-		</p>
-	</Container>
 	<Projects link={false}/>
 	<Footer/>
 	</>
