@@ -1,5 +1,5 @@
-let Container = ({ tag = 'div', tb = true, rl = true, t = false, b = false, ...props }) => {
-	if (tb) { t = tb; b = tb; };
+let Container = ({ tag = 'div', tb = null, rl = true, t = true, b = true, ...props }) => {
+	if (tb != null) { t = tb; b = tb; };
 	let pad = (param, variable) => {
 		if (param) {
 			if (parseInt(param)) {

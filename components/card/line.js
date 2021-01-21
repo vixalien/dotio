@@ -1,4 +1,4 @@
-let Entity = ({ src, alt, title, date, text, href }) => {
+let Entity = ({ title, date, text, href }) => {
 	return <>
 		<a className="entity" href={href}>
 			<h3>{title} &rarr;</h3>

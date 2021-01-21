@@ -31,14 +31,15 @@ export default (parent, options) => {
     if (name != 'index') plural = '/' + (obj.plural || (name + 's'));
 
     // allow specifying the view engine
-    if (obj.engine) app.set('view engine', obj.engine);
     app.set('views', path.join(process.cwd(), '.build', 'views', name));
+    if (obj.engine) app.set('view engine', obj.engine);
+    if (obj.views) app.set('views', obj.views);
 
     // generate routes based
     // on the exported methods
     for (var key in obj) {
       // "reserved" exports
-      if (~['name', 'prefix', 'engine', 'before', 'after', 'plural'].indexOf(key)) continue;
+      if (~['name', 'prefix', 'engine', 'views', 'before', 'after', 'plural'].indexOf(key)) continue;
       // route exports
       switch (key) {
         case 'show':
@@ -69,6 +70,7 @@ export default (parent, options) => {
           /* istanbul ignore next */
           throw new Error('unrecognized route: ' + name + '.' + key);
       }
+      // if setting view engine or view path
 
       // setup
       handler = obj[key];

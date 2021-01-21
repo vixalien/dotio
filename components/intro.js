@@ -10,6 +10,9 @@ let Intro = ({ title, description }) => {
 			<hr/>
 		</Container>
 		<style jsx>{`
+			h1 {
+				margin: 0;
+			}
 			p.description {
 				color: var(--secondary);
 				font-weight: 400;

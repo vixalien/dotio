@@ -8,7 +8,7 @@ export default () => {
 	return (<>
 	<Header hero={true}/>
 	<Welcome/>
-	<Posts/>
+	<Posts max="4"/>
 	<Projects/>
 	<Footer/>
 	</>
