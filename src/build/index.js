@@ -2,6 +2,7 @@ let list = [
 	'./js',
 	'./css',
 	'./posts',
+	'./projects',
 	'./lib'
 ];
 

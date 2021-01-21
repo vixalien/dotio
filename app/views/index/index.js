@@ -6,10 +6,10 @@ import Posts from "components/card/posts";
 
 export default () => {
 	return (<>
-	<Header hero={true}/>
+	<Header/>
 	<Welcome/>
-	<Posts max="4"/>
-	<Projects/>
+	<Posts max={4}/>
+	<Projects max={4}/>
 	<Footer/>
 	</>
 	)

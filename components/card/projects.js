@@ -1,25 +1,29 @@
 import Card from './index';
-import Entity from './line';
+import Line from './line';
 
-let SampleProject = () => {
-	return <Entity
-		title="Title"
-		text="Sample Project"
-		date="Tue Jan 19 2021"
-		href="/project/random"
-	/>
+import projectsJSON from '.build/data/projects.json'
+
+let Projects = ({ max = Infinity }) => {
+	let projects = Object.entries(projectsJSON)
+		.filter((_, id) => id < max)
+		.sort((a, b) => a.created - b.created)
+
+	return projects.map(([slug, {title, description, created}]) => <Line
+		title={title}
+		date={new Date(created).toDateString()}
+		text={description}
+		href={"/project/"+slug}
+	/>)
 }
 
-let ProjectsCard = () => {
+let ProjectsCard = ({ title = "Recent Projects", link = "View All" ,max = Infinity ,...props }) => {
 	return <Card
-		title="Projects"
-		link="View All"
+		title={title}
+		link={link}
 		href="/projects"
+		column
 	>
-		<SampleProject />
-		<SampleProject />
-		<SampleProject />
-		<SampleProject />
+		<Projects max={max} {...props}/>
 	</Card>
 }
 
