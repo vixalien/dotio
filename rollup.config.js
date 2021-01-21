@@ -111,12 +111,20 @@ export default [
 	// Build Javascript bundles and prepend import React (for Server consumption)
 	{
 		input: 'src/index.js',
-		output: {
-			file: '.build/server/index.js',
-			format: 'cjs',
-			sourcemap: 'inline',
-			sourcemapExcludeSources: true
-		},
+		output: [
+			{
+				file: '.build/server/index.js',
+				format: 'cjs',
+				sourcemap: 'inline',
+				sourcemapExcludeSources: true
+			},
+			{
+				file: 'api/index.js',
+				format: 'cjs',
+				sourcemap: 'inline',
+				sourcemapExcludeSources: true
+			}
+		],
 		plugins: [
 			resolve(),
 			external(),
