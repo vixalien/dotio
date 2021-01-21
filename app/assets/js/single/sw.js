@@ -99,15 +99,16 @@ let Paths = {
 }
 
 
-addEventListener('install', () => Precache([
-	'/offline',
-	'/',
-	'/unbox.css',
-	'/style.css',
-]))
+addEventListener('install', evt => 
+	evt.waitUntil(Precache([
+		'/offline',
+		'/',
+		'/unbox.css',
+	]))
+);
 
 // Fetch, timeout, load from cache or just load
-self.addEventListener('fetch', async (evt) => {
+addEventListener('fetch', async (evt) => {
 	for (key in Paths) {
 		if(evt.request.url.match(new RegExp(key))) {
 			let handler = Paths[key]();
