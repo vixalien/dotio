@@ -76,4 +76,5 @@ let prefetch = url => {
 	} else {
 		return doPrefetch(url);
 	}
-}})();
+}})/*()*/;
+// Disable prefetch for now
