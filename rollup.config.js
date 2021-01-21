@@ -117,6 +117,12 @@ export default [
 			sourcemap: 'inline',
 			sourcemapExcludeSources: true
 		},
+		output: {
+			file: 'api/server/index.js',
+			format: 'cjs',
+			sourcemap: 'inline',
+			sourcemapExcludeSources: true
+		},
 		plugins: [
 			resolve(),
 			external(),
