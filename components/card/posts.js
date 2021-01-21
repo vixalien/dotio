@@ -6,7 +6,7 @@ import postsJSON from '.build/data/posts.json'
 let Posts = ({ max = Infinity }) => {
 	let posts = Object.entries(postsJSON)
 		.filter((_, id) => id < max)
-		.sort((a, b) => a.date - b.date)
+		.sort((a, b) => a.created - b.created)
 
 	return posts.map(([slug, {title, description, created}]) => <Line
 		title={title}
