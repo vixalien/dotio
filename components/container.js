@@ -1,21 +1,25 @@
-let Container = ({ tb = true, rl = true, ...props }) => {
-	return <>
-		<div {...props}/>
-		<style jsx>{`
-			div {
-				padding: ${tb ? '30px' : '0'} ${rl ? '10px' : '0'};
-				max-width: 620px;
-				margin: auto;
+let Container = ({ tag = 'div', tb = null, rl = true, t = true, b = true, ...props }) => {
+	if (tb != null) { t = tb; b = tb; };
+	let pad = (param, variable) => {
+		if (param) {
+			if (parseInt(param)) {
+				return parseInt(param) + 'px';
+			} else {
+				return 'var(--padding-' + variable + ')';
 			}
-
-			@supports (padding: max(env(safe-area-inset-left, 0px))) {
-				div {
-					${rl ? '' : `
-					padding-left  : max(env(safe-area-inset-left  ), 10px);
-					padding-right : max(env(safe-area-inset-right ), 10px);
-					`}
-					max-width: calc(600px + max(env(safe-area-inset-right ), 10px) + max(env(safe-area-inset-left  ), 10px));
-				}
+		} else {
+			return '0';
+		}
+	}
+	let Tag = ({ children, ...props }) => React.createElement(tag, props, children)
+	return <>
+		<Tag className="container" {...props}/>
+		<style jsx>{`
+			.container {
+				padding: ${pad(t, 'top')} ${pad(rl, 'right')} ${pad(b, 'bottom')} ${pad(rl, 'left')};
+				max-width: var(--max-width);
+				width: 100%;
+				margin: auto;
 			}
 		`}</style>
 	</>

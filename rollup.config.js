@@ -4,27 +4,25 @@ import commonjs from "@rollup/plugin-commonjs";
 import inject from "@rollup/plugin-inject";
 import { terser } from "rollup-plugin-terser";
 
-import { external, getInputFromGlobs, resolveRoot, resolveHTML, json } from "./config/plugins/index";
+import { external, getInputFromGlobs, resolveRoot, resolveHTML, json } from "./src/plugins/index";
 
 // No code-splitting
-let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
+let globs = Object.entries(getInputFromGlobs('app/views/**/*.js', 'app/views'))
 .map(([key, value]) => {
 	return {
 		input: { [key]: value },
-		output: [
-			{ 
-				dir: '.build/views/',
-				format: 'umd',
-				name: 'JSH',
-				exports: 'auto',
-				sourcemap: 'inline',
-				sourcemapExcludeSources: true,
-				globals: {
-					react: "React",
-					'styled-jsx/style': "_JSXStyle"
-				}
+		output: { 
+			dir: '.build/views/',
+			format: 'umd',
+			name: 'JSH',
+			exports: 'auto',
+			sourcemap: 'inline',
+			sourcemapExcludeSources: true,
+			globals: {
+				react: "React",
+				'styled-jsx/style': "_JSXStyle"
 			}
-		],
+		},
 		plugins: [
 			resolve(),
 			resolveRoot(),
@@ -44,18 +42,16 @@ let globs = Object.entries(getInputFromGlobs('views/**/*.js', '.'))
 export default [
 	// Build hydrate function
 	{
-		input: './config/lib/react/hydrate.js',
-		output: [
-			{
-				globals: {
-					react: "React",
-					"react-dom": "ReactDOM"
-				},
-				file: '.build/lib/hydrate.js',
-				format: 'iife',
-				name: 'hydrate',
+		input: 'src/lib/react/hydrate.js',
+		output: {
+			globals: {
+				react: "React",
+				"react-dom": "ReactDOM"
 			},
-		],
+			file: '.build/lib/hydrate.js',
+			format: 'iife',
+			name: 'hydrate',
+		},
 		plugins: [
 			resolve(),
 			external(),
@@ -69,17 +65,15 @@ export default [
 	},
 	// Build wrappers
 	{
-		input: './config/lib/react/wrapper.js',
-		output: [
-			{
-				file: '.build/lib/wrapper.js',
-				format: 'umd',
-				name: 'wrapper',
-				globals: {
-					react: "React"
-				}
-			},
-		],
+		input: 'src/lib/react/wrapper.js',
+		output: {
+			file: '.build/lib/wrapper.js',
+			format: 'umd',
+			name: 'wrapper',
+			globals: {
+				react: "React"
+			}
+		},
 		plugins: [
 			resolve(),
 			external(),
@@ -92,17 +86,15 @@ export default [
 		]
 	},
 	{
-		input: './config/lib/react/wrapper-mdx.js',
-		output: [
-			{
-				file: '.build/lib/wrapper-mdx.js',
-				format: 'umd',
-				name: 'wrapper',
-				globals: {
-					react: "React"
-				}
-			},
-		],
+		input: 'src/lib/react/wrapper-mdx.js',
+		output: {
+			file: '.build/lib/wrapper-mdx.js',
+			format: 'umd',
+			name: 'wrapper',
+			globals: {
+				react: "React"
+			}
+		},
 		plugins: [
 			resolveRoot(),
 			resolve(),
@@ -118,15 +110,13 @@ export default [
 	},
 	// Build Javascript bundles and prepend import React (for Server consumption)
 	{
-		input: './index.js',
-		output: [
-			{
-				file: '.build/server/index.js',
-				format: 'cjs',
-				sourcemap: 'inline',
-				sourcemapExcludeSources: true
-			},
-		],
+		input: 'src/index.js',
+		output: {
+			file: '.build/server/index.js',
+			format: 'cjs',
+			sourcemap: 'inline',
+			sourcemapExcludeSources: true
+		},
 		plugins: [
 			resolve(),
 			external(),
@@ -140,7 +130,7 @@ export default [
 		]
 	},
 	{
-		input:  './config/lib/react/template.html',
+		input:  'src/lib/react/template.html',
 		output: [
 			{
 				file: '.build/lib/template.html'

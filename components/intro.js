@@ -1,13 +1,18 @@
+import Container from './container';
+
 let Intro = ({ title, description }) => {
 	return <>
-		<section>
+		<Container tag='section' tb={false}>
 			<div>
 				<h1>{title}</h1>
-				<p className="description">{description}</p>
+				{description ? <p className="description">{description}</p> : null}
 			</div>
 			<hr/>
-		</section>
+		</Container>
 		<style jsx>{`
+			h1 {
+				margin: 0;
+			}
 			p.description {
 				color: var(--secondary);
 				font-weight: 400;
@@ -18,20 +23,6 @@ let Intro = ({ title, description }) => {
 			div {
 				padding-top: 30px;
 				padding-bottom: 30px;
-			}
-
-			section {
-				max-width: 620px;
-				margin: auto;
-				padding-left: 10px;
-				padding-right: 10px;
-			}
-
-			@supports (padding: max(env(safe-area-inset-left, 0px))) {
-				section {
-					padding-left  : max(env(safe-area-inset-left  ), 10px);
-					padding-right : max(env(safe-area-inset-right ), 10px);
-				}
 			}
 		`}</style>
 	</>

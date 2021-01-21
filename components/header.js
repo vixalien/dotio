@@ -1,9 +1,10 @@
 import List from './list';
+import Container from './container';
 
-export default () => {
+export default ({ hero = false }) => {
 	return (<>
 		<header>
-			<nav>
+			<Container tag='nav' tb={'15'}>
 				<span><a href="/">vixalien.io</a></span>
 				<List
 					links={{
@@ -12,7 +13,7 @@ export default () => {
 						'/about': 'About'
 					}}
 				/>
-			</nav>
+			</Container>
 		</header>
 		<style jsx>{`
 			/* Lil Header */
@@ -22,25 +23,10 @@ export default () => {
 			  font-size: 2rem;
 			}
 
-			nav {
-			  padding: 15px 10px;
-			}
-
-			@supports (padding: max(env(safe-area-inset-left, 0px))) {
-				nav {
-					padding-top   : max(env(safe-area-inset-top   ), 15px);
-					padding-left  : max(env(safe-area-inset-left  ), 10px);
-					padding-right : max(env(safe-area-inset-right ), 10px);
-					max-width: calc(600px + max(env(safe-area-inset-right ), 10px) + max(env(safe-area-inset-left  ), 10px));
-				}
-			}
-
-			nav {
+			header :global(nav) {
 			  display: flex;
 			  justify-content: space-between;
 			  flex-wrap: wrap;
-			  max-width: 600px;
-				margin: auto;
 			}
 
 			span {

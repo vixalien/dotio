@@ -1,33 +1,18 @@
+import Container from 'components/container';
+
 export default () => {
 	return (<>
 		<footer>
-			<nav>
+			<Container tb={'50'}>
 				<hr/>
-				<a href="#top">↑ Top</a>
+				<a className="top" href="#top">↑ Top</a>
 				<div><a href="/">vixalien.io</a></div>
-			</nav>
+			</Container>
 		</footer>
 		<style jsx>{`
 			/* Lil Footer */
-			nav {
-			  padding: 15px 10px 30px;
-			}
-
-			@supports (padding: max(env(safe-area-inset-left, 0px))) {
-				nav {
-					padding-bottom: max(env(safe-area-inset-bottom), 30px);
-					padding-left  : max(env(safe-area-inset-left  ), 10px);
-					padding-right : max(env(safe-area-inset-right ), 10px);
-					max-width: calc(600px + max(env(safe-area-inset-right ), 10px) + max(env(safe-area-inset-left  ), 10px));
-				}
-			}
-
-			nav {
-			  display: flex;
-			  justify-content: space-between;
-			  flex-direction: column;
-			  max-width: 600px;
-				margin: auto;
+			footer {
+			  color: var(--heading-fg);
 			}
 
 			hr {
@@ -35,8 +20,12 @@ export default () => {
 			}
 
 			a {
-				margin: 0;
 				color: inherit;
+			}
+
+			a.top {
+				display: inline-block;
+  			margin: 10px 0;
 			}
 
 			div {
@@ -44,16 +33,9 @@ export default () => {
 			}
 
 			div a {
-				color: inherit;
-				margin: 0;
-				border-bottom: 2px solid transparent;
+				border-bottom-width: 2px;
 				font-size: 2rem;
 				font-weight: 700;
-			}
-
-			div a:hover {
-				border-bottom: 2px solid;
-				text-decoration: none;
 			}
 		`}</style>
 	</>)

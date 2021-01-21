@@ -27,12 +27,24 @@ let Title = ({ heading, href, link }) => {
 			a {
 				margin: auto;
 				font-size: 1.1rem;
+				font-weight: 500;
 				color: var(--link);
-				border-bottom: none;
 			}
 
 			a:hover {
-				border-bottom: bottom;
+				border-bottom-color: currentColor;
+			}
+
+			:global([data-dark]) a {
+				border: 1px solid;
+			  padding: 5px 10px;
+			  border-radius: 10px;
+				color: var(--fg);
+				transition: color .3s;
+			}
+
+			:global([data-dark]) a:hover {
+				color: var(--link)
 			}
 		`}</style>
 	</F>

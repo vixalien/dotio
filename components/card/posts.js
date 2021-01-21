@@ -3,10 +3,11 @@ import Line from './line';
 
 import postsJSON from '.build/data/posts.json'
 
-let posts = Object.entries(postsJSON)
-	.filter((_, id) => id < 4)
+let Posts = ({ max = Infinity }) => {
+	let posts = Object.entries(postsJSON)
+		.filter((_, id) => id < max)
+		.sort((a, b) => a.created - b.created)
 
-let Posts = (props) => {
 	return posts.map(([slug, {title, description, created}]) => <Line
 		title={title}
 		date={new Date(created).toDateString()}
@@ -15,15 +16,14 @@ let Posts = (props) => {
 	/>)
 }
 
-let PostsCard = () => {
+let PostsCard = ({ title = "Recent Posts", link = "View All" ,max = Infinity ,...props }) => {
 	return <Card
-		title="Recent Posts"
-		link="View All"
+		title={title}
+		link={link}
 		href="/posts"
 		column
-		hr={true}
 	>
-		<Posts/>
+		<Posts max={max} {...props}/>
 	</Card>
 }
 
